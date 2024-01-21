@@ -8,19 +8,25 @@
 import SwiftUI
 
 struct AuthView: View {
-    @EnvironmentObject var firebaseUserViewModel:FirebaseUserViewModel
+    @ObservedObject var firebaseUserViewModel:AuthViewModel
     @State private var mode: AuthMode = .login
     @State private var email = ""
     @State private var password = ""
+    @State private var name = ""
     var body: some View {
         VStack{
-            Image("logo")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 100)
+            Text("To use this feature, first you must Login or create new account")
+                .font(.title)
+                .bold()
             VStack(spacing: 48) {
-                Text("To use this feature, first you must Login")
+                
                 VStack(spacing: 12) {
+                    ZStack(alignment: .bottom) {
+                        TextField("Username", text: $name)
+                            .frame(minHeight: 36)
+                        
+                        Divider()
+                    }
                     ZStack(alignment: .bottom) {
                         TextField("E-Mail", text: $email)
                             .frame(minHeight: 36)
@@ -52,7 +58,7 @@ struct AuthView: View {
     }
     
     private var disableAuthentication: Bool {
-        email.isEmpty || password.isEmpty
+        email.isEmpty || password.isEmpty || name.isEmpty
     }
     
     private func switchAuthenticationMode() {
@@ -65,7 +71,7 @@ struct AuthView: View {
         case .login:
             firebaseUserViewModel.login(email: email, password: password)
         case .register:
-            firebaseUserViewModel.register(email: email, password: password)
+            firebaseUserViewModel.register(email: email, password: password, name: name)
         }
     }
 }

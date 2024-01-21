@@ -22,8 +22,9 @@ struct Bogun_GymApp: App {
     
     
     var body: some Scene {
+        
         WindowGroup {
-            HomeView()
+            NavigatorView()
         }
     }
 }
