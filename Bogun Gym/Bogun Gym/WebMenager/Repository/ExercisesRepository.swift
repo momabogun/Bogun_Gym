@@ -9,11 +9,11 @@ import Foundation
 class ExercisesRepository{
     
     
-    static func fetchAllExercises(target: String) async throws -> [Exercise]{
+    static func fetchAllExercises() async throws -> [Exercise]{
         
         let headers = ApiKeys.header
         
-        guard let url = URL(string: ApiKeys.exerciseTargetUrl + target) else{
+        guard let url = URL(string: ApiKeys.exerciseTargetUrl) else{
             throw HTTPError.invalidURL
         }
         

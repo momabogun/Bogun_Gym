@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ExerciseListView: View {
-    init(target: String) {
-        self._exerciseViewModel = StateObject(wrappedValue: ExercisesViewModel(target: target))
+    init(bodyPart: BodyPart) {
+        self._exerciseViewModel = StateObject(wrappedValue: ExercisesViewModel(bodyPart: bodyPart))
     }
     @StateObject var exerciseViewModel :ExercisesViewModel
     var body: some View {
@@ -21,7 +21,7 @@ struct ExerciseListView: View {
                             .padding(.horizontal,20)
                             .environmentObject(exerciseViewModel)
                     }
-                }.navigationTitle(exerciseViewModel.target.capitalized).navigationBarTitleDisplayMode(.inline)
+                }.navigationTitle(exerciseViewModel.bodyPart.title?.capitalized ?? "").navigationBarTitleDisplayMode(.inline)
             }
         }
         

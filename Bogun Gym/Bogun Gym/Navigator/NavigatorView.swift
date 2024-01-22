@@ -11,20 +11,12 @@ struct NavigatorView: View {
     @StateObject var authViewModel = AuthViewModel()
     var body: some View {
         TabView {
-            HomeView().tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
-            ShopView().tabItem {
-                Label("Shop", systemImage: "cart.fill")
-            }
-            ChatsView().tabItem {
-                Label("Chats", systemImage: "message.fill")
-            }
-            MyWorkoutView().tabItem {
-                Label("My Workouts", systemImage: "dumbbell.fill")
-            }
-            ProfileView().tabItem{
-                Label("Profile", systemImage: "person.circle.fill")
+            ForEach(Tab.allCases) { tab in
+                tab.view
+                    .tabItem {
+                        Label(tab.title, systemImage: tab.icon)
+                    }
+                    .tag(tab)
             }
         }.environmentObject(authViewModel)
         

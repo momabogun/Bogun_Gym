@@ -18,14 +18,17 @@ struct PersistentStore{
         container.viewContext
     }
     
+    
+    
     init(){
-        container = NSPersistentContainer(name: "SupplementsData")
+        container = NSPersistentContainer(name: "BogunGymData")
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
                 fatalError("Error loading Core Data: \(error), \(error.userInfo)")
             }
         }
+        
     }
     
     
@@ -33,8 +36,6 @@ struct PersistentStore{
         guard context.hasChanges else{
             return
         }
-    
-    
     do{
         try context.save()
     } catch let error as NSError{

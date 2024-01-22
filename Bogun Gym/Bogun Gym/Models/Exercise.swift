@@ -9,7 +9,7 @@ import Foundation
 struct Exercise: Codable{
     var id: String
     var name: String
-    var gifUrl: URL
+    var gifUrl: String
     var equipment: String
     var target: String
     var instructions: [String]
