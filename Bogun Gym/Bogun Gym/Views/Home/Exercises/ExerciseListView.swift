@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct ExerciseListView: View {
-    init(bodyPart: BodyPart) {
-        self._exerciseViewModel = StateObject(wrappedValue: ExercisesViewModel(bodyPart: bodyPart))
-    }
-    @StateObject var exerciseViewModel :ExercisesViewModel
+    
+    @StateObject var exerciseViewModel = ExercisesViewModel()
+    @ObservedObject var bodyPart: BodyPart
     var body: some View {
         NavigationStack{
             ScrollView(showsIndicators: false) {
@@ -21,8 +20,10 @@ struct ExerciseListView: View {
                             .padding(.horizontal,20)
                             .environmentObject(exerciseViewModel)
                     }
-                }.navigationTitle(exerciseViewModel.bodyPart.title?.capitalized ?? "").navigationBarTitleDisplayMode(.inline)
+                }.navigationTitle(bodyPart.title ?? "").navigationBarTitleDisplayMode(.inline)
             }
+        }.onAppear{
+            exerciseViewModel.fetchExercises(for: bodyPart)
         }
         
     }

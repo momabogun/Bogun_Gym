@@ -8,6 +8,8 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+
+@MainActor
 class ChatViewModel: ObservableObject{
     
     private let firebaseManager = FirebaseManager.shared

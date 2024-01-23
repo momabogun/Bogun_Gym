@@ -9,6 +9,8 @@ import Foundation
 import CoreData
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+
+@MainActor
 class StoreViewModel: ObservableObject {
     
     

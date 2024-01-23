@@ -49,6 +49,8 @@
 		21A14B4D2B59E30400035742 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A14B4C2B59E30400035742 /* ChatsView.swift */; };
 		21A14B572B59E4D000035742 /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A14B562B59E4D000035742 /* NavigatorView.swift */; };
 		21A14B592B59E70300035742 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A14B582B59E70300035742 /* Message.swift */; };
+		21CA099A2B5FDC2C00710ABC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA09992B5FDC2C00710ABC /* SplashScreenView.swift */; };
+		21CA099C2B5FDC7C00710ABC /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA099B2B5FDC7C00710ABC /* ContainerView.swift */; };
 		21D1FF4A2B5C09D600D898B8 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1FF492B5C09D600D898B8 /* CartItemView.swift */; };
 		21D1FF4C2B5C09E200D898B8 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1FF4B2B5C09E200D898B8 /* CartView.swift */; };
 		21D1FF502B5C0A2800D898B8 /* AddToCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1FF4F2B5C0A2800D898B8 /* AddToCartButton.swift */; };
@@ -115,6 +117,8 @@
 		21A14B4C2B59E30400035742 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
 		21A14B562B59E4D000035742 /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
 		21A14B582B59E70300035742 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		21CA09992B5FDC2C00710ABC /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		21CA099B2B5FDC7C00710ABC /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		21D1FF492B5C09D600D898B8 /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
 		21D1FF4B2B5C09E200D898B8 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		21D1FF4F2B5C0A2800D898B8 /* AddToCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartButton.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		213834512B598A3800EC75F9 /* Bogun Gym */ = {
 			isa = PBXGroup;
 			children = (
+				21CA09982B5FDC1800710ABC /* SplashScreen */,
 				213834602B598A8C00EC75F9 /* GoogleService-Info.plist */,
 				214B49CF2B5BFFC300C0A308 /* CoreData */,
 				2199C0912B5AE3BC003248F1 /* WebMenager */,
@@ -198,6 +203,7 @@
 				2138346E2B598BC100EC75F9 /* Views */,
 				2138346D2B598BB800EC75F9 /* Models */,
 				213834522B598A3800EC75F9 /* Bogun_GymApp.swift */,
+				21CA099B2B5FDC7C00710ABC /* ContainerView.swift */,
 				213834562B598A3900EC75F9 /* Assets.xcassets */,
 				213834582B598A3900EC75F9 /* Preview Content */,
 			);
@@ -360,6 +366,14 @@
 				21A14B562B59E4D000035742 /* NavigatorView.swift */,
 			);
 			path = Navigator;
+			sourceTree = "<group>";
+		};
+		21CA09982B5FDC1800710ABC /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				21CA09992B5FDC2C00710ABC /* SplashScreenView.swift */,
+			);
+			path = SplashScreen;
 			sourceTree = "<group>";
 		};
 		21D1FF4D2B5C09E500D898B8 /* Cart */ = {
@@ -532,6 +546,7 @@
 				2151D7242B5EFC33006C853D /* AdsView.swift in Sources */,
 				2199C0A42B5AF175003248F1 /* ExerciseDetailView.swift in Sources */,
 				21A14B4D2B59E30400035742 /* ChatsView.swift in Sources */,
+				21CA099C2B5FDC7C00710ABC /* ContainerView.swift in Sources */,
 				2199C09A2B5AE83F003248F1 /* HTTPError.swift in Sources */,
 				21DF9F122B5D1BE800B37C48 /* MessageView.swift in Sources */,
 				21E0CE852B59944200437594 /* AuthView.swift in Sources */,
@@ -542,6 +557,7 @@
 				21D1FF522B5C0A3400D898B8 /* RemoveFromCartButton.swift in Sources */,
 				2151D7262B5F02D5006C853D /* MyWorkout.swift in Sources */,
 				2174A2AC2B5C6241006111FD /* ShoppingHistory.swift in Sources */,
+				21CA099A2B5FDC2C00710ABC /* SplashScreenView.swift in Sources */,
 				214165EA2B5A9E6D00F6DD21 /* ShopView.swift in Sources */,
 				21DF9F082B5D0D7D00B37C48 /* Chat.swift in Sources */,
 				2165D4082B5E8CF600DAE919 /* Exercise.swift in Sources */,

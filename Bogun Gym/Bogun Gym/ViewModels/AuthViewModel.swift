@@ -9,7 +9,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-
+@MainActor
 class AuthViewModel: ObservableObject{
     
     

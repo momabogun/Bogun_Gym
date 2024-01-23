@@ -9,17 +9,16 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var authViewModel :AuthViewModel
-    
-    @State var search = ""
+    @StateObject var bodyViewModel = BodyPartViewModel()
     let columns = [
         GridItem(.adaptive(minimum: 150))
         ]
     var body: some View {
         NavigationStack{
             ScrollView {
-            VStack{
-                AdsView()
-                
+                VStack{
+                    AdsView()
+                    
                     LazyVGrid(columns: columns, spacing: 20) {
                         BodyPartListView()
                     }.padding(5)
@@ -34,8 +33,10 @@ struct HomeView: View {
                 
                 
             }
-                            
-        }        }
+            
+        }
+    }
+    
     }
 
 

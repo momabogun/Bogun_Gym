@@ -8,6 +8,9 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+
+
+@MainActor
 class MessageViewModel: ObservableObject{
     
     

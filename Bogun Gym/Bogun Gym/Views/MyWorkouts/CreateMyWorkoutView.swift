@@ -10,6 +10,7 @@ import SwiftUI
 struct CreateMyWorkoutView: View {
     @EnvironmentObject var myWorkoutViewModel :MyWorkoutViewModel
     @State var text = ""
+    @StateObject var bodyPartViewModel = BodyPartViewModel()
     var body: some View{
         NavigationStack{
             VStack{
@@ -19,12 +20,19 @@ struct CreateMyWorkoutView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 200)
-                    Text("Enter your workout name")
-                    TextField("Workout name", text: $text, axis: .vertical)
-                        .frame(minHeight: 50)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
-                ScrollView{
+                    Form{
+                        Section("Workout name"){
+                            TextField("Workout name", text: $text, axis: .vertical)
+                                .frame(minHeight: 50)
+                        }
+                        Section{
+                            DisclosureGroupBodyPartView()
+                                .environmentObject(bodyPartViewModel)
+                            
+                        }
+                            
+                    }
+                    
                 }
                 VStack{
                     PrimaryButton(title: "Save Workout", action: {})

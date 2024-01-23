@@ -21,28 +21,33 @@ struct MyWorkoutListView: View {
         }
     }
     
+    
     private var placeholder: some View {
-        VStack(spacing: 15) {
-            Image("logo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 300)
-            Image("myworkout")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 300)
-            VStack{
-                Text("Unleash your potential")
-                    .foregroundStyle(.accent)
-                Text("Design your Ultimate Workout Today")
-            }
-            .frame(height: 200)
-            .multilineTextAlignment(.center)
+        NavigationStack{
+            VStack(spacing: 15) {
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300)
+                Image("myworkout")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 300)
+                VStack{
+                    Text("Unleash your potential")
+                        .foregroundStyle(.accent)
+                    Text("Design your Ultimate Workout Today")
+                }
+                .frame(height: 200)
+                .multilineTextAlignment(.center)
                 .padding()
                 .font(.largeTitle)
-                
-            PrimaryButton(title: "Get Started", action: {})
-                .padding()
+                //            PrimaryButton(title: "Get Started", action: {})
+                //                    .padding()
+                NavigationLink("Get Started", destination: CreateMyWorkoutView())
+                    .font(.title)
+                    .buttonStyle(.bordered)
+            }
         }
     }
     

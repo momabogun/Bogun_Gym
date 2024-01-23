@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@MainActor
 class MyWorkoutViewModel: ObservableObject{
     
     @Published var myWorkouts = [MyWorkout]()

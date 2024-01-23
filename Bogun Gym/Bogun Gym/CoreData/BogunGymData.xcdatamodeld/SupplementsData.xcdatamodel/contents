@@ -4,14 +4,16 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseEntity" inverseName="bodyPart" inverseEntity="ExerciseEntity"/>
     </entity>
     <entity name="ExerciseEntity" representedClassName="ExerciseEntity" syncable="YES" codeGenerationType="class">
         <attribute name="equipment" optional="YES" attributeType="String"/>
         <attribute name="gifUrl" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="instructions" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="target" optional="YES" attributeType="String"/>
+        <relationship name="bodyPart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BodyPart" inverseName="exercises" inverseEntity="BodyPart"/>
     </entity>
     <entity name="Supplement" representedClassName="Supplement" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
