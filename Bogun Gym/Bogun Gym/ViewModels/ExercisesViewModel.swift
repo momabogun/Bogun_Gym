@@ -14,10 +14,26 @@ class ExercisesViewModel: ObservableObject{
     let container = PersistentStore.shared
     
     
+    
+    @Published var search = ""
+    
+    
     init(){
         fetchExercises()
     }
     
+    
+    
+    
+    func searchForExercises(){
+        let request : NSFetchRequest<ExerciseEntity> = ExerciseEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "name CONTAINS %@", search)
+        do{
+            exercises = try container.context.fetch(request)
+        }catch {
+            fatalError("Failed to fetch exercises: \(error)")
+        }
+    }
     
  
     
@@ -54,12 +70,13 @@ class ExercisesViewModel: ObservableObject{
         
         for exercise in exercises{
             let entity = ExerciseEntity(context: context)
-            entity.id = UUID()
+            entity.id = UUID().uuidString
             entity.name = exercise.name
             entity.gifUrl = exercise.gifUrl
             entity.equipment = exercise.equipment
             entity.target = exercise.target
             entity.instructions = exercise.instructions.joined(separator: "\n")
+            entity.isPicked = false
             if let bodyPart = fetchOrCreateBodyPartEntity(for: exercise.target){
                 entity.bodyPart = bodyPart
             }
@@ -71,6 +88,9 @@ class ExercisesViewModel: ObservableObject{
         
         
     }
+    
+    
+    
     
     
     

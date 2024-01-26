@@ -8,10 +8,29 @@
 import SwiftUI
 
 struct MyWorkoutView: View {
+    @EnvironmentObject var myWorkoutViewModel: MyWorkoutViewModel
     let workout: MyWorkout
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            ScrollView(showsIndicators: false) {
+                VStack{
+                    ForEach(myWorkoutViewModel.pickedExercises, id: \.id){ exercise in
+                        ExerciseView(exercise: exercise)
+                            .padding(.horizontal,20)
+                    }
+                }.navigationTitle(workout.name).navigationBarTitleDisplayMode(.inline)
+            }
+        }.onAppear{
+            myWorkoutViewModel.fetchExercisesInMyWorkout(workoutId: workout.id ?? "")
+        }
+        
     }
 }
+
+
+    
+    
+    
+    
 
 

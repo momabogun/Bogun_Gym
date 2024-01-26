@@ -23,6 +23,7 @@ struct CreateChatSheet: View {
                         chatViewModel.createChat(title: title)
                         showSheet()
                     }.buttonStyle(.bordered)
+                        .disabled(title.isEmpty)
                 }
                 ToolbarItem(placement: .cancellationAction){
                     Button(action: showSheet, label: {

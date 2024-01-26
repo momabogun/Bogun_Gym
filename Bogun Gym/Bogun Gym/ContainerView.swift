@@ -12,8 +12,10 @@ struct ContainerView: View {
     var body: some View {
         if !isSplashScreenViewPresented {
             NavigatorView()
+                .preferredColorScheme(.dark)
         } else {
             SplashScreenView(isPresented: $isSplashScreenViewPresented)
+                .preferredColorScheme(.dark)
         }
     }
 }

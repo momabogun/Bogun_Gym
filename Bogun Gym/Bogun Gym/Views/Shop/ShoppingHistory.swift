@@ -12,7 +12,7 @@ struct ShoppingHistory: View {
     var body: some View {
         NavigationStack{
             VStack{
-                List(storeViewModel.bills){ bill in
+                List(storeViewModel.purchases){ bill in
                     VStack(alignment: .leading){
                         
                         Text("Your payment from:")

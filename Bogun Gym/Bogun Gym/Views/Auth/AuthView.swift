@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AuthView: View {
     @ObservedObject var firebaseUserViewModel:AuthViewModel
+    
     @State private var mode: AuthMode = .login
     @State private var email = ""
     @State private var password = ""

@@ -14,13 +14,17 @@ struct ExerciseListView: View {
     var body: some View {
         NavigationStack{
             ScrollView(showsIndicators: false) {
-                VStack{
-                    ForEach(exerciseViewModel.exercises, id: \.id){ exercise in
+                
+                    ForEach(exerciseViewModel.exercises){ exercise in
                         ExerciseView(exercise: exercise)
                             .padding(.horizontal,20)
-                            .environmentObject(exerciseViewModel)
+                            .navigationTitle(bodyPart.title?.capitalized ?? "").navigationBarTitleDisplayMode(.inline)
+                            
                     }
-                }.navigationTitle(bodyPart.title ?? "").navigationBarTitleDisplayMode(.inline)
+                .searchable(text: $exerciseViewModel.search).onChange(of: exerciseViewModel.search) {
+                    exerciseViewModel.searchForExercises()
+            }
+                    
             }
         }.onAppear{
             exerciseViewModel.fetchExercises(for: bodyPart)

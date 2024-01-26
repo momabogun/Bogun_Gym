@@ -47,7 +47,7 @@ class MessageViewModel: ObservableObject{
         do {
             try firebaseManager.database.collection("Messages").addDocument(from: message)
         }catch let error {
-            print("Error while saving meal: \(error)")
+            print("Error while saving message: \(error)")
         }
     }
     
@@ -61,7 +61,7 @@ class MessageViewModel: ObservableObject{
                     return
                 }
                 guard let documents = querySnapshot?.documents else {
-                    print("Error while downloading Meals")
+                    print("Error while downloading Messages")
                     return
                 }
                 
@@ -72,8 +72,7 @@ class MessageViewModel: ObservableObject{
     }
     
     func removeListener(){
-        // import with logout
-        messages.removeAll()
+        
         listener?.remove()
     }
 }

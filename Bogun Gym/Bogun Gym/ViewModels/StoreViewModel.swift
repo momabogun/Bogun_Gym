@@ -19,7 +19,7 @@ class StoreViewModel: ObservableObject {
     private var listener: ListenerRegistration?
     @Published var supplements :  [Supplement] = []
     @Published var cartSupplements: [Supplement] = []
-    @Published var bills = [Bill]()
+    @Published var purchases = [Purchase]()
     @Published var search = ""
     
     
@@ -29,10 +29,7 @@ class StoreViewModel: ObservableObject {
     }
     
     
-    deinit {
-        listener?.remove()
-        print("listener is off")
-    }
+    
     
     
     func filterSupplementsByText() {
@@ -65,7 +62,7 @@ class StoreViewModel: ObservableObject {
             }
             supplements = try container.context.fetch(request)
         } catch {
-            fatalError("Failed to fetch tasks: \(error)")
+            fatalError("Failed to fetch supplements: \(error)")
         }
     }
     
@@ -169,23 +166,23 @@ class StoreViewModel: ObservableObject {
 
 extension StoreViewModel{
     
-    func createBill(){
+    func createPurchase(){
         
         guard let userId = firebaseManager.userId else {return}
         
-        let bill = Bill(userId: userId, purshaseDate: Date(),totalPrice: calculateTotal())
+        let bill = Purchase(userId: userId, purshaseDate: Date(),totalPrice: calculateTotal())
         
         do {
-            try firebaseManager.database.collection("Bills").addDocument(from: bill)
+            try firebaseManager.database.collection("Purchases").addDocument(from: bill)
         }catch let error {
-            print("Error while saving meal: \(error)")
+            print("Error while saving purchase: \(error)")
         }
     }
     
-    func fetchBills(){
+    func fetchPurchases(){
         guard let userId = firebaseManager.userId else {return}
         
-        self.listener = firebaseManager.database.collection("Bills")
+        self.listener = firebaseManager.database.collection("Purchases")
             .whereField("userId", isEqualTo: userId)
             .addSnapshotListener{ querySnapshot, error in
                 if let error {
@@ -193,19 +190,19 @@ extension StoreViewModel{
                     return
                 }
                 guard let documents = querySnapshot?.documents else {
-                    print("Error while downloading Meals")
+                    print("Error while downloading purchases")
                     return
                 }
                 
-                self.bills = documents.compactMap{ queryDocumentSnapshot -> Bill? in
-                    try? queryDocumentSnapshot.data(as: Bill.self)
+                self.purchases = documents.compactMap{ queryDocumentSnapshot -> Purchase? in
+                    try? queryDocumentSnapshot.data(as: Purchase.self)
                 }
             }
     }
     
     func removeListener(){
         // import with logout
-        bills.removeAll()
+        purchases.removeAll()
         cartSupplements.removeAll()
         listener?.remove()
     }

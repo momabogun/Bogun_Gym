@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ExerciseView: View {
     let exercise: ExerciseEntity
-    @EnvironmentObject var exercisesViewModel: ExercisesViewModel
     var body: some View {
         HStack{
             AsyncImage(url: URL(string: exercise.gifUrl ?? "")) { image in

@@ -9,17 +9,25 @@ import SwiftUI
 
 struct MyWorkoutListView: View {
     @StateObject var myWorkoutViewModel = MyWorkoutViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
         NavigationStack {
             Group {
-                if myWorkoutViewModel.myWorkouts.isEmpty {
-                    placeholder
-                } else {
-                    list
+                if authViewModel.userIsLoggenIn{
+                    if myWorkoutViewModel.myWorkouts.isEmpty {
+                        placeholder
+                    } else {
+                        list
+                    }
+                } else{
+                    AuthView(firebaseUserViewModel: authViewModel)
+                        .padding()
                 }
             }
+                
+            }
         }
-    }
+    
     
     
     private var placeholder: some View {
@@ -42,9 +50,8 @@ struct MyWorkoutListView: View {
                 .multilineTextAlignment(.center)
                 .padding()
                 .font(.largeTitle)
-                //            PrimaryButton(title: "Get Started", action: {})
-                //                    .padding()
-                NavigationLink("Get Started", destination: CreateMyWorkoutView())
+                
+                NavigationLink("Get Started", destination: CreateMyWorkoutView().environmentObject(myWorkoutViewModel))
                     .font(.title)
                     .buttonStyle(.bordered)
             }
@@ -53,19 +60,32 @@ struct MyWorkoutListView: View {
     
     private var list: some View {
         VStack{
-            List(myWorkoutViewModel.myWorkouts) { workout in
-                MyWorkoutView(workout: workout)
+            List(myWorkoutViewModel.myWorkouts.filter{(myWorkoutViewModel.search.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(myWorkoutViewModel.search))}) { workout in
+                NavigationLink(destination: MyWorkoutView(workout: workout).environmentObject(myWorkoutViewModel), label: {
+                    Text(workout.name)
+                })
+                    
                     .swipeActions {
                         Button(role: .destructive) {
-                            
+                            myWorkoutViewModel.deleteMyWorkout(with: workout.id ?? "")
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
                     }
+                    
+            }.onAppear{
+                myWorkoutViewModel.fetchMyWorkouts()
+            }.searchable(text: $myWorkoutViewModel.search)
+            
+            
+        }.navigationTitle("My Workouts")
+            .toolbar{
+                ToolbarItem{
+                    NavigationLink(destination: CreateMyWorkoutView().environmentObject(myWorkoutViewModel)) {
+                        Image(systemName: "plus.circle.fill")
+                    }
+                }
             }
-            
-            
-        }
     }
 }
 

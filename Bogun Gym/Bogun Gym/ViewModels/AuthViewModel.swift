@@ -83,7 +83,7 @@ class AuthViewModel: ObservableObject{
         let user = FireProfile(id: id, email: email, name: name)
         
         do{
-            try firebaseManager.database.collection("Profile").document(id).setData(from: user)
+            try firebaseManager.database.collection("Profiles").document(id).setData(from: user)
         } catch{
             print("fehler beim speichern des users: \(error)")
         }
@@ -95,7 +95,7 @@ class AuthViewModel: ObservableObject{
     
     
     private func fetchUser(with id: String){
-        let userRef = firebaseManager.database.collection("Profile").document(id)
+        let userRef = firebaseManager.database.collection("Profiles").document(id)
         self.listener = userRef.addSnapshotListener{ documentSnapshot, error in
             guard let document = documentSnapshot else {
                 print("Error fetching user: \(error?.localizedDescription ?? "Unknown error")")

@@ -39,7 +39,7 @@ class ChatViewModel: ObservableObject{
         do {
             try firebaseManager.database.collection("Chats").addDocument(from: chat)
         }catch let error {
-            print("Error while saving meal: \(error)")
+            print("Error while saving chat: \(error)")
         }
     }
     
@@ -52,7 +52,7 @@ class ChatViewModel: ObservableObject{
                     return
                 }
                 guard let documents = querySnapshot?.documents else {
-                    print("Error while downloading Meals")
+                    print("Error while downloading Chats")
                     return
                 }
                 
@@ -62,9 +62,5 @@ class ChatViewModel: ObservableObject{
             }
     }
     
-    func removeListener(){
-        // import with logout
-        chats.removeAll()
-        listener?.remove()
-    }
+    
 }

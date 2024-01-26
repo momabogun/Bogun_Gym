@@ -26,7 +26,7 @@ struct CartView: View {
             .alert("Would you like to proceed with your purchase?", isPresented: $isShown) {
                 Button("Yes"){
                     congrats.toggle()
-                    storeViewModel.createBill()
+                    storeViewModel.createPurchase()
                     storeViewModel.setAllSupplementsQuantity()
                     storeViewModel.removeAll()
                 }

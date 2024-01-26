@@ -9,8 +9,9 @@
     <entity name="ExerciseEntity" representedClassName="ExerciseEntity" syncable="YES" codeGenerationType="class">
         <attribute name="equipment" optional="YES" attributeType="String"/>
         <attribute name="gifUrl" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="instructions" optional="YES" attributeType="String"/>
+        <attribute name="isPicked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="target" optional="YES" attributeType="String"/>
         <relationship name="bodyPart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BodyPart" inverseName="exercises" inverseEntity="BodyPart"/>

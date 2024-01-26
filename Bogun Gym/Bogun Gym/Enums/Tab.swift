@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 enum Tab: String,CaseIterable,Identifiable{
-    case home,shop,chats,myworkout,profile
+    case home,shop,chats,myworkout,settings
     
     var id: String{rawValue}
     
@@ -23,8 +23,8 @@ enum Tab: String,CaseIterable,Identifiable{
             "Chats"
         case .myworkout:
             "My Workouts"
-        case .profile:
-            "Profile"
+        case .settings:
+            "Settings"
         }
     }
     
@@ -40,8 +40,8 @@ enum Tab: String,CaseIterable,Identifiable{
             "message.fill"
         case .myworkout:
             "dumbbell.fill"
-        case .profile:
-            "person.circle.fill"
+        case .settings:
+            "gear"
         }
     }
     
@@ -57,8 +57,8 @@ enum Tab: String,CaseIterable,Identifiable{
                         AnyView(ChatsView())
         case .myworkout:
                                     AnyView(MyWorkoutListView())
-        case .profile:
-                                                AnyView(ProfileView())
+        case .settings:
+                                                AnyView(SettingsView())
         }
     }
 }

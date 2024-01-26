@@ -29,7 +29,7 @@ struct AdsView: View {
                 .tag(Ad.fourth)
             
         }.tabViewStyle(.page)
-            .frame(height: 300)
+            .frame(height: 200)
     }
 }
 
