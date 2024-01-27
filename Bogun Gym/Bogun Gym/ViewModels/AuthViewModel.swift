@@ -129,3 +129,28 @@ class AuthViewModel: ObservableObject{
     }
     
 }
+extension AuthViewModel{
+    
+    
+    func updateProfile(about: String, name: String){
+        let data = [
+            "about": about,
+            "name": name,
+        ]
+        
+        firebaseManager.database.collection("Profiles").document(firebaseManager.userId ?? "").setData(data, merge: true){ error in
+            if let error {
+                print("Profile not updated", error.localizedDescription)
+                return
+                
+            }
+            print("Profile Updated")
+            
+        }
+        
+    }
+    
+    
+    
+    
+}

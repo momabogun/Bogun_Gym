@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct AddToCartButton: View {
+    
     let supplement: Supplement
     @Binding var quantity: Int16
     let action: () -> Void
     @EnvironmentObject private var storeViewModel: StoreViewModel
+    
     var body: some View {
         
         HStack{
             Stepper("Qty: \(quantity)", value: $quantity, in: 1...Int16.max)
                         .font(.footnote)
                         .foregroundStyle(.black)
+                        
         }
         
         Button(action: action){

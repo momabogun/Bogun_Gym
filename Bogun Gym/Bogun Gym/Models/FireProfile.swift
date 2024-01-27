@@ -10,4 +10,6 @@ struct FireProfile: Codable{
     var id: String
     var email: String
     var name: String
+    var profilePic: String?
+    var about: String?
 }

@@ -16,17 +16,38 @@ struct SettingsListView: View {
         NavigationStack{
             Form{
                 Section{
-                    HStack{
-                        Image("profile")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .cornerRadius(50)
-                        VStack(alignment: .leading){
-                            Text(authViewModel.user?.name ?? "")
-                            Text("💪🏽")
+                    NavigationLink(destination: EditProfileView(user: authViewModel.user!).environmentObject(authViewModel)) {
+                        HStack{
+                            if authViewModel.user!.profilePic == nil {
+                                Image("profile")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
+                                    .cornerRadius(50)
+                            } else{
+                                AsyncImage(url: URL(string: authViewModel.user?.profilePic ?? "")) { image in
+                                    image
+                                        .resizable()
+                                        
+                                        
+                                }placeholder: {
+                                    Image("profile")
+                                        .resizable()
+                                        
+                                }
+                                .scaledToFill()
+                                .frame(width: 50, height: 50)
+                                .cornerRadius(50)
+
+                            }
+                            VStack(alignment: .leading){
+                                Text(authViewModel.user?.name ?? "")
+                                    .bold()
+                                Text(authViewModel.user?.about ?? "")
+                            }
                         }
                     }
+                    
                     
                 }
                 
