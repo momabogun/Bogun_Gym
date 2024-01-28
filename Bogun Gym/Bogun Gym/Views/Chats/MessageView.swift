@@ -9,13 +9,34 @@ import SwiftUI
 
 struct MessageView: View {
     let message: Message
-    @StateObject var authViewModel = AuthViewModel()
     var body: some View {
         HStack{
             VStack(alignment: .leading){
-                Text(message.userName)
-                    .font(.footnote)
-                    .bold()
+                HStack{
+                    if message.userPhoto == nil {
+                        Image("profile")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .cornerRadius(30)
+                    } else{
+                        AsyncImage(url: URL(string: message.userPhoto ?? "")) { image in
+                            image
+                                .resizable()
+                                
+                                
+                        }placeholder: {
+                            ProgressView().progressViewStyle(.circular)
+                        }
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                        .cornerRadius(30)
+
+                    }
+                    Text(message.userName)
+                        .font(.footnote)
+                        .bold()
+                }
                 Spacer()
                 Text(message.content)
                 Text(formatDate(date:message.timestamp))

@@ -54,7 +54,7 @@ class PhotoPickerViewModel: ObservableObject{
                 print(metadata.size)
                 thisUserPhotoStorageRef.downloadURL { (url, error) in
                     guard let downloadURL = url else {
-                        print("Error occured after uplading")
+                        print("Error occured after uploading")
                         return
                     }
                     let changeRequest = self.firebaseManager.auth.currentUser?.createProfileChangeRequest()

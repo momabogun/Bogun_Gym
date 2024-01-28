@@ -150,6 +150,33 @@ extension AuthViewModel{
         
     }
     
+    func updateProfileBiometrics(gender: String, age: Int, weight: Int, neck: Int,waist: Int, hip: Int, activity: String, goal: String){
+        let data = [
+            "gender" : gender,
+            "age" : age,
+            "weight" : weight,
+            "neck" : neck,
+            "waist" : waist,
+            "hip" : hip,
+            "activity" : activity,
+            "goal" : goal
+        ] as [String : Any]
+        
+        firebaseManager.database.collection("Profiles").document(firebaseManager.userId ?? "").setData(data, merge: true){ error in
+            if let error {
+                print("Profile not updated", error.localizedDescription)
+                return
+                
+            }
+            print("Profile Updated")
+            
+        }
+        
+    }
+    
+    
+   
+    
     
     
     

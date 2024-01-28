@@ -9,7 +9,34 @@ import SwiftUI
 
 struct FitnessCalculatorView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form{
+            Section{
+                
+                NavigationLink {
+                    
+                } label: {
+                    Text("Daily calory requirements")
+                }
+                NavigationLink {
+                    
+                } label: {
+                    Text("BMI")
+                }
+                
+                NavigationLink {
+                    
+                } label: {
+                    Text("Body Fat Percentage")
+                }
+                
+                NavigationLink {
+                    
+                } label: {
+                    Text("Ideal weight")
+                }
+
+            }
+        }
     }
 }
 

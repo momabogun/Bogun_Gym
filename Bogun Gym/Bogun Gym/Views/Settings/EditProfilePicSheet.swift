@@ -13,7 +13,6 @@ struct EditProfilePicSheet: View {
     @State private var selectedImage: UIImage?
     @State private var selectedItem: PhotosPickerItem?
     @State var image: UIImage?
-    let user: FireProfile
     @StateObject var photoViewModel = PhotoPickerViewModel()
     @EnvironmentObject var authViewModel: AuthViewModel
     @Binding var isShown: Bool
@@ -29,23 +28,30 @@ struct EditProfilePicSheet: View {
                         }
                         Spacer()
                         Image(systemName: "camera")
+                    }.foregroundStyle(.white).onTapGesture {
+                        isShown.toggle()
                     }
                     
                     
                     HStack{
                         PhotosPicker(selection: $photoViewModel.imageSelection, matching: .images) {
-                            Text("Choose Photo")
-                            Spacer()
-                            Image(systemName: "photo")
+                            HStack{
+                                Text("Choose Photo")
+                                Spacer()
+                                Image(systemName: "photo")
+                            }.foregroundStyle(.white)
                         }
                         
                         
                         
+                    }.onSubmit {
+                        isShown.toggle()
                     }
                     
                     HStack{
                         Button("Delete Photo"){
-                            
+                            authViewModel.user?.profilePic = nil
+                            isShown.toggle()
                         }
                         Spacer()
                         Image(systemName:"trash")

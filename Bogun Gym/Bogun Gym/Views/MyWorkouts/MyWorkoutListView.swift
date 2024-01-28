@@ -23,6 +23,8 @@ struct MyWorkoutListView: View {
                     AuthView(firebaseUserViewModel: authViewModel)
                         .padding()
                 }
+            }.onAppear{
+                myWorkoutViewModel.fetchMyWorkouts()
             }
                 
             }

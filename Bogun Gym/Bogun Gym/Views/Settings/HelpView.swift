@@ -9,7 +9,27 @@ import SwiftUI
 
 struct HelpView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            VStack{
+                Spacer(minLength: 100)
+                
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                    .cornerRadius(200)
+                Spacer(minLength: 100)
+                
+                Form{
+                    Section{
+                        Text("Help Center")
+                        Text("Contact Us")
+                        Text("Terms and Privacy Policy")
+                        Text("Licences")
+                    }
+                }
+            }.navigationTitle("Bogun Gym").navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 

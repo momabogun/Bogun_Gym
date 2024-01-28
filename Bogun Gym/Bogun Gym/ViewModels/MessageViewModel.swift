@@ -38,11 +38,11 @@ class MessageViewModel: ObservableObject{
     
     
     
-    func createMessage(content: String){
+    func createMessage(content: String, userName: String, userPhoto: String?){
         
         guard let userId = firebaseManager.userId else {return}
         
-        let message = Message(userId: userId, chatId: chat.id ?? "", content: content, timestamp: Date(), userName: user.name)
+        let message = Message(userId: userId, chatId: chat.id ?? "", content: content, timestamp: Date(), userName: userName, userPhoto: userPhoto)
         
         do {
             try firebaseManager.database.collection("Messages").addDocument(from: message)

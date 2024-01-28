@@ -8,25 +8,30 @@
 import SwiftUI
 
 struct ProfilePicView: View {
-    let user: FireProfile
     @State var isShown: Bool = false
+    @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
         NavigationStack{
+            
             VStack{
-                
-                    AsyncImage(url: URL(string: user.profilePic ?? "")) { image in
+                if authViewModel.user?.profilePic == nil {
+                    Image("profile")
+                        .resizable()
+                        .scaledToFit()
+                } else{
+                    
+                    AsyncImage(url: URL(string: authViewModel.user?.profilePic ?? "")) { image in
                         image
                             .resizable()
                             .scaledToFit()
-                            
+                        
                     }placeholder: {
-                        Image("profile")
-                            .resizable()
-                            .scaledToFit()
+                        ProgressView().progressViewStyle(.circular)
                     }
+                }
                 
             }.sheet(isPresented: $isShown, content: {
-                EditProfilePicSheet(user: user, isShown: $isShown)
+                EditProfilePicSheet(isShown: $isShown)
                     .presentationDetents([.height(250)])
             }).navigationTitle("Profile Photo").toolbar{
                 ToolbarItem{

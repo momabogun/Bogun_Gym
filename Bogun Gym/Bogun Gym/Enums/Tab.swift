@@ -25,6 +25,7 @@ enum Tab: String,CaseIterable,Identifiable{
             "My Workouts"
         case .settings:
             "Settings"
+            
         }
     }
     
@@ -48,17 +49,18 @@ enum Tab: String,CaseIterable,Identifiable{
     var view: AnyView {
         switch self{
             
-        
+            
         case .home:
             AnyView(HomeView())
         case .shop:
             AnyView(ShopView())
         case .chats:
-                        AnyView(ChatsView())
+            AnyView(ChatsView())
         case .myworkout:
-                                    AnyView(MyWorkoutListView())
+            AnyView(MyWorkoutListView())
         case .settings:
-                                                AnyView(SettingsView())
+            AnyView(SettingsView())
+            
         }
     }
 }

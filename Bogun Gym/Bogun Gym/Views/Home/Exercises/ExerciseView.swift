@@ -17,7 +17,7 @@ struct ExerciseView: View {
                     .scaledToFill()
                     
             } placeholder: {
-                Image(systemName: "dumbbell.fill")
+                ProgressView().progressViewStyle(.circular)
             }.frame(width: 50, height: 50)
                 .cornerRadius(10)
             

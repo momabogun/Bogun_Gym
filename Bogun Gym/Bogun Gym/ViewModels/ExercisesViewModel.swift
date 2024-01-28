@@ -124,7 +124,7 @@ class ExercisesViewModel: ObservableObject{
     func fetchExercisesAPI(){
         Task{
             do{
-                let exercises = try await ExercisesRepository.fetchAllExercises()
+                let exercises = try await BogunGymRepository.fetchAllExercises()
                 addExercisesFromAPI(exercises: exercises)
             } catch{
                 print("Request failed with error: \(error)")

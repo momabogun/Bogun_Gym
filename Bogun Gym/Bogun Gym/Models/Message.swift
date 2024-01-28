@@ -16,4 +16,5 @@ struct Message: Codable, Identifiable{
     var content: String
     var timestamp: Date
     var userName: String
+    var userPhoto: String?
 }

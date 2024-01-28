@@ -11,14 +11,13 @@ struct SettingsListView: View {
     @StateObject var myWorkoutViewModel = MyWorkoutViewModel()
     @StateObject var storeViewModel = StoreViewModel()
     @EnvironmentObject var authViewModel :AuthViewModel
-    @State var darkMode: Bool = false
     var body: some View {
         NavigationStack{
             Form{
                 Section{
-                    NavigationLink(destination: EditProfileView(user: authViewModel.user!).environmentObject(authViewModel)) {
+                    NavigationLink(destination: EditProfileView().environmentObject(authViewModel)) {
                         HStack{
-                            if authViewModel.user!.profilePic == nil {
+                            if authViewModel.user?.profilePic == nil {
                                 Image("profile")
                                     .resizable()
                                     .scaledToFit()
@@ -31,9 +30,7 @@ struct SettingsListView: View {
                                         
                                         
                                 }placeholder: {
-                                    Image("profile")
-                                        .resizable()
-                                        
+                                    ProgressView().progressViewStyle(.circular)
                                 }
                                 .scaledToFill()
                                 .frame(width: 50, height: 50)
@@ -59,7 +56,7 @@ struct SettingsListView: View {
                             Text(SettingsItem.account.title)
                         }
                     }
-                    NavigationLink(destination: FitnessCalculatorView()) {
+                    NavigationLink(destination: BodyParametersView()) {
                         HStack{
                             Image(systemName: SettingsItem.calculator.image)
                                 
@@ -93,7 +90,7 @@ struct SettingsListView: View {
                         authViewModel.logout()
                     }
                 }
-            }.navigationTitle("Profile").navigationBarTitleDisplayMode(.inline)
+            }.navigationTitle("Settings").navigationBarTitleDisplayMode(.inline)
             
                 
             }
@@ -103,6 +100,4 @@ struct SettingsListView: View {
     }
 
 
-#Preview {
-    SettingsListView()
-}
+
