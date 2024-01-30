@@ -12,7 +12,11 @@ import FirebaseFirestore
 @MainActor
 class AuthViewModel: ObservableObject{
     
-    
+    @Published var bmi: Bmi?
+    @Published var goal: DailyCaloryReq?
+    @Published var bodyFat: BodyFat?
+    @Published var idealWeight: IdealWeight?
+    @Published var genders = ["male", "female"]
     private let firebaseManager = FirebaseManager.shared
     
     @Published var user: FireProfile?
@@ -150,9 +154,10 @@ extension AuthViewModel{
         
     }
     
-    func updateProfileBiometrics(gender: String, age: Int, weight: Int, neck: Int,waist: Int, hip: Int, activity: String, goal: String){
+    func updateProfileBiometrics(gender: String, age: Int, weight: Int, neck: Int,waist: Int, hip: Int, activity: String, goal: String, height: Int){
         let data = [
             "gender" : gender,
+            "height" : height,
             "age" : age,
             "weight" : weight,
             "neck" : neck,
@@ -172,6 +177,52 @@ extension AuthViewModel{
             
         }
         
+    }
+    
+    
+    func fetchBmi(){
+        Task{
+            do{
+                let bmi = try await BogunGymRepository.fetchBmi(age: user?.age ?? 0, weight: user?.weight ?? 0, height: user?.height ?? 0)
+                self.bmi = bmi
+            } catch{
+                print("Request bmi failed with error: \(error)")
+            }
+        }
+    }
+    
+    
+    func fetchDailyReq(){
+        Task{
+            do{
+                let goal = try await BogunGymRepository.fetchDailyReq(age: user?.age ?? 0, weight: user?.weight ?? 0, height: user?.height ?? 0, activity: user?.activity ?? "", gender: user?.gender ?? "")
+                self.goal = goal
+            }catch{
+                print("Request daily requered failed with error: \(error)")
+            }
+        }
+    }
+    
+    func fetchBodyFat(){
+        Task{
+            do{
+                let bodyFat = try await BogunGymRepository.fetchBodyFat(age: user?.age ?? 0, weight: user?.weight ?? 0, height: user?.height ?? 0, activity: user?.activity ?? "", gender: user?.gender ?? "", neck: user?.neck ?? 0, waist: user?.waist ?? 0, hip: user?.hip ?? 0)
+                self.bodyFat = bodyFat
+            }catch{
+                print("Request body fat failed with error: \(error)")
+            }
+        }
+    }
+    
+    func fetchIdealWeight(){
+        Task{
+            do{
+                let ideal = try await BogunGymRepository.fetchIdealWeright(gender: user?.gender ?? "", height: user?.height ?? 0)
+                self.idealWeight = ideal
+            }catch{
+                print("Request ideal weight failed with error: \(error)")
+            }
+        }
     }
     
     

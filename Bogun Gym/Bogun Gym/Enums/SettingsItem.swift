@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 enum SettingsItem: String,CaseIterable,Identifiable{
-    case account, calculator, help, share
+    case account, calculator, help, share, body
     
     var id: String {rawValue}
     
@@ -23,6 +23,8 @@ enum SettingsItem: String,CaseIterable,Identifiable{
             "info.square.fill"
         case .share:
             "heart.square.fill"
+        case .body:
+            "figure"
         }
     }
     
@@ -38,6 +40,8 @@ enum SettingsItem: String,CaseIterable,Identifiable{
             "Help"
         case .share:
             "Tell a Friend"
+        case .body:
+            "Your Body Details"
         }
     }
 }

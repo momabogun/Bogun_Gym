@@ -25,6 +25,7 @@ struct Bogun_GymApp: App {
         
         WindowGroup {
             ContainerView()
+                .preferredColorScheme(.dark)
         }
     }
 }

@@ -16,7 +16,7 @@ struct AddMessageView: View {
                 .frame(minHeight: 50)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             Button{
-                messageViewModel.createMessage(content: messageViewModel.text,userName: authViewModel.user?.name ?? "", userPhoto: authViewModel.user?.profilePic)
+                messageViewModel.createMessage(content: messageViewModel.text)
                 messageViewModel.text = ""
             } label: {
                 Image(systemName: "paperplane.circle.fill")

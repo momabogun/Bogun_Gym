@@ -15,6 +15,4 @@ struct Message: Codable, Identifiable{
     var chatId: String
     var content: String
     var timestamp: Date
-    var userName: String
-    var userPhoto: String?
 }

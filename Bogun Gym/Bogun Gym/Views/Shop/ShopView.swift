@@ -53,7 +53,7 @@ struct ShopView: View {
                     .padding(.bottom, 10)
             }.onAppear{
                 storeViewModel.fetchPurchases()
-            }.navigationTitle("Supplement Shop").navigationBarTitleDisplayMode(.inline)
+            }.navigationTitle("Supplement Shop")
                 .sheet(isPresented: $shouldShowCart, content: {
                     CartView(storeViewModel: storeViewModel, cartShow: $shouldShowCart)
                 })

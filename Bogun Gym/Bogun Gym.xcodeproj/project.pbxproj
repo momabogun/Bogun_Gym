@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		210AF9D02B6119FD0008AC9B /* MultipleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210AF9CF2B6119FD0008AC9B /* MultipleSelectionView.swift */; };
 		210BB1532B615C6A00EE9620 /* MyWorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210BB1522B615C6A00EE9620 /* MyWorkoutDetailView.swift */; };
+		2118E42D2B67E2A800003990 /* ProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2118E42C2B67E2A800003990 /* ProfileSheet.swift */; };
 		213834532B598A3800EC75F9 /* Bogun_GymApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213834522B598A3800EC75F9 /* Bogun_GymApp.swift */; };
 		213834572B598A3900EC75F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 213834562B598A3900EC75F9 /* Assets.xcassets */; };
 		2138345A2B598A3900EC75F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 213834592B598A3900EC75F9 /* Preview Assets.xcassets */; };
@@ -47,7 +48,6 @@
 		2165D40C2B5E9B1800DAE919 /* BodyPartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165D40B2B5E9B1800DAE919 /* BodyPartListView.swift */; };
 		2174A2AC2B5C6241006111FD /* ShoppingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174A2AB2B5C6241006111FD /* ShoppingHistory.swift */; };
 		21758DE32B6131CA0056DEDE /* PickedExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21758DE22B6131CA0056DEDE /* PickedExercisesView.swift */; };
-		218AE77B2B667A950090F981 /* FitnessCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AE77A2B667A950090F981 /* FitnessCalculatorViewModel.swift */; };
 		218AE77D2B667C570090F981 /* Bmi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AE77C2B667C570090F981 /* Bmi.swift */; };
 		218AE77F2B6680220090F981 /* BmiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AE77E2B6680220090F981 /* BmiView.swift */; };
 		218AE7812B6685500090F981 /* BodyParametersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AE7802B6685500090F981 /* BodyParametersView.swift */; };
@@ -65,6 +65,13 @@
 		21A14B4D2B59E30400035742 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A14B4C2B59E30400035742 /* ChatsView.swift */; };
 		21A14B572B59E4D000035742 /* NavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A14B562B59E4D000035742 /* NavigatorView.swift */; };
 		21A14B592B59E70300035742 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A14B582B59E70300035742 /* Message.swift */; };
+		21B97AFC2B66D41A00BC8EBE /* FitnessCalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B97AFB2B66D41A00BC8EBE /* FitnessCalListView.swift */; };
+		21B97AFE2B66D70300BC8EBE /* DailyCaloryReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B97AFD2B66D70300BC8EBE /* DailyCaloryReq.swift */; };
+		21B97B002B66DE5900BC8EBE /* DailyCaloryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B97AFF2B66DE5900BC8EBE /* DailyCaloryView.swift */; };
+		21B97B022B67037700BC8EBE /* BodyFatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B97B012B67037700BC8EBE /* BodyFatView.swift */; };
+		21B97B042B67039300BC8EBE /* BodyFat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B97B032B67039300BC8EBE /* BodyFat.swift */; };
+		21B97B062B670A9B00BC8EBE /* IdealWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B97B052B670A9B00BC8EBE /* IdealWeight.swift */; };
+		21B97B082B670CD300BC8EBE /* IdealWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B97B072B670CD300BC8EBE /* IdealWeightView.swift */; };
 		21CA099A2B5FDC2C00710ABC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA09992B5FDC2C00710ABC /* SplashScreenView.swift */; };
 		21CA099C2B5FDC7C00710ABC /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA099B2B5FDC7C00710ABC /* ContainerView.swift */; };
 		21D1FF4A2B5C09D600D898B8 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1FF492B5C09D600D898B8 /* CartItemView.swift */; };
@@ -108,6 +115,7 @@
 /* Begin PBXFileReference section */
 		210AF9CF2B6119FD0008AC9B /* MultipleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionView.swift; sourceTree = "<group>"; };
 		210BB1522B615C6A00EE9620 /* MyWorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWorkoutDetailView.swift; sourceTree = "<group>"; };
+		2118E42C2B67E2A800003990 /* ProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheet.swift; sourceTree = "<group>"; };
 		2138344F2B598A3800EC75F9 /* Bogun Gym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bogun Gym.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		213834522B598A3800EC75F9 /* Bogun_GymApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bogun_GymApp.swift; sourceTree = "<group>"; };
 		213834562B598A3900EC75F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,7 +144,6 @@
 		2165D40B2B5E9B1800DAE919 /* BodyPartListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartListView.swift; sourceTree = "<group>"; };
 		2174A2AB2B5C6241006111FD /* ShoppingHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingHistory.swift; sourceTree = "<group>"; };
 		21758DE22B6131CA0056DEDE /* PickedExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickedExercisesView.swift; sourceTree = "<group>"; };
-		218AE77A2B667A950090F981 /* FitnessCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCalculatorViewModel.swift; sourceTree = "<group>"; };
 		218AE77C2B667C570090F981 /* Bmi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bmi.swift; sourceTree = "<group>"; };
 		218AE77E2B6680220090F981 /* BmiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiView.swift; sourceTree = "<group>"; };
 		218AE7802B6685500090F981 /* BodyParametersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyParametersView.swift; sourceTree = "<group>"; };
@@ -154,6 +161,13 @@
 		21A14B4C2B59E30400035742 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
 		21A14B562B59E4D000035742 /* NavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorView.swift; sourceTree = "<group>"; };
 		21A14B582B59E70300035742 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		21B97AFB2B66D41A00BC8EBE /* FitnessCalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessCalListView.swift; sourceTree = "<group>"; };
+		21B97AFD2B66D70300BC8EBE /* DailyCaloryReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCaloryReq.swift; sourceTree = "<group>"; };
+		21B97AFF2B66DE5900BC8EBE /* DailyCaloryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCaloryView.swift; sourceTree = "<group>"; };
+		21B97B012B67037700BC8EBE /* BodyFatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFatView.swift; sourceTree = "<group>"; };
+		21B97B032B67039300BC8EBE /* BodyFat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFat.swift; sourceTree = "<group>"; };
+		21B97B052B670A9B00BC8EBE /* IdealWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdealWeight.swift; sourceTree = "<group>"; };
+		21B97B072B670CD300BC8EBE /* IdealWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdealWeightView.swift; sourceTree = "<group>"; };
 		21CA09992B5FDC2C00710ABC /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		21CA099B2B5FDC7C00710ABC /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		21D1FF492B5C09D600D898B8 /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
@@ -272,6 +286,9 @@
 				21DF9F072B5D0D7D00B37C48 /* Chat.swift */,
 				2151D7252B5F02D5006C853D /* MyWorkout.swift */,
 				218AE77C2B667C570090F981 /* Bmi.swift */,
+				21B97AFD2B66D70300BC8EBE /* DailyCaloryReq.swift */,
+				21B97B032B67039300BC8EBE /* BodyFat.swift */,
+				21B97B052B670A9B00BC8EBE /* IdealWeight.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,16 +348,14 @@
 		2199C08D2B5AE335003248F1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				21B97AFA2B66D34D00BC8EBE /* FitnessCalculator */,
 				21E0CE902B5996F900437594 /* SettingsView.swift */,
 				21F5B6CD2B62F03300BD4C09 /* SettingsListView.swift */,
-				21ECB4772B63C0CB002ACBF9 /* FitnessCalculatorView.swift */,
 				21ECB4792B63C167002ACBF9 /* HelpView.swift */,
 				21ECB47D2B63C707002ACBF9 /* AccountView.swift */,
 				216183CE2B64041800B4DC5F /* EditProfileView.swift */,
 				216183D02B640F0100B4DC5F /* ProfilePicView.swift */,
 				216183D22B64140600B4DC5F /* EditProfilePicSheet.swift */,
-				218AE77E2B6680220090F981 /* BmiView.swift */,
-				218AE7802B6685500090F981 /* BodyParametersView.swift */,
 				218AE7822B6689EE0090F981 /* SliderView.swift */,
 			);
 			path = Settings;
@@ -354,6 +369,7 @@
 				21DF9F0F2B5D195100B37C48 /* AddMessageView.swift */,
 				21DF9F112B5D1BE800B37C48 /* MessageView.swift */,
 				21DF9F132B5D1D8400B37C48 /* MessageListView.swift */,
+				2118E42C2B67E2A800003990 /* ProfileSheet.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -428,6 +444,20 @@
 			path = Navigator;
 			sourceTree = "<group>";
 		};
+		21B97AFA2B66D34D00BC8EBE /* FitnessCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				218AE77E2B6680220090F981 /* BmiView.swift */,
+				218AE7802B6685500090F981 /* BodyParametersView.swift */,
+				21ECB4772B63C0CB002ACBF9 /* FitnessCalculatorView.swift */,
+				21B97AFB2B66D41A00BC8EBE /* FitnessCalListView.swift */,
+				21B97AFF2B66DE5900BC8EBE /* DailyCaloryView.swift */,
+				21B97B012B67037700BC8EBE /* BodyFatView.swift */,
+				21B97B072B670CD300BC8EBE /* IdealWeightView.swift */,
+			);
+			path = FitnessCalculator;
+			sourceTree = "<group>";
+		};
 		21CA09982B5FDC1800710ABC /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,7 +503,6 @@
 				2165D4092B5E977900DAE919 /* BodyPartViewModel.swift */,
 				2151D7272B5F03BD006C853D /* MyWorkoutViewModel.swift */,
 				21A018EE2B65347C005A0316 /* PhotoPickerViewModel.swift */,
-				218AE77A2B667A950090F981 /* FitnessCalculatorViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -597,9 +626,10 @@
 			files = (
 				2151D72A2B5F0668006C853D /* MyWorkoutView.swift in Sources */,
 				21E0CE8D2B5995BE00437594 /* AuthMode.swift in Sources */,
-				218AE77B2B667A950090F981 /* FitnessCalculatorViewModel.swift in Sources */,
+				21B97B002B66DE5900BC8EBE /* DailyCaloryView.swift in Sources */,
 				2151D72E2B5F115D006C853D /* Tab.swift in Sources */,
 				210AF9D02B6119FD0008AC9B /* MultipleSelectionView.swift in Sources */,
+				21B97B022B67037700BC8EBE /* BodyFatView.swift in Sources */,
 				213834742B598C7700EC75F9 /* FirebaseManager.swift in Sources */,
 				21DF9F0E2B5D165D00B37C48 /* MessageViewModel.swift in Sources */,
 				2151D72C2B5F06FD006C853D /* MyWorkoutListView.swift in Sources */,
@@ -610,6 +640,7 @@
 				21DF9F142B5D1D8400B37C48 /* MessageListView.swift in Sources */,
 				21DF9F0C2B5D10E200B37C48 /* CreateChatSheet.swift in Sources */,
 				21E0CE8F2B59965D00437594 /* HomeView.swift in Sources */,
+				2118E42D2B67E2A800003990 /* ProfileSheet.swift in Sources */,
 				21D1FF502B5C0A2800D898B8 /* AddToCartButton.swift in Sources */,
 				2151D7242B5EFC33006C853D /* AdsView.swift in Sources */,
 				2199C0A42B5AF175003248F1 /* ExerciseDetailView.swift in Sources */,
@@ -621,15 +652,18 @@
 				21DF9F122B5D1BE800B37C48 /* MessageView.swift in Sources */,
 				21E0CE852B59944200437594 /* AuthView.swift in Sources */,
 				216183D12B640F0100B4DC5F /* ProfilePicView.swift in Sources */,
+				21B97AFC2B66D41A00BC8EBE /* FitnessCalListView.swift in Sources */,
 				214B49D62B5C00A800C0A308 /* StoreViewModel.swift in Sources */,
 				2199C09C2B5AEABD003248F1 /* ExercisesViewModel.swift in Sources */,
 				2151D7222B5EFB3C006C853D /* Ad.swift in Sources */,
 				21D1FF4C2B5C09E200D898B8 /* CartView.swift in Sources */,
 				21D1FF522B5C0A3400D898B8 /* RemoveFromCartButton.swift in Sources */,
 				2151D7262B5F02D5006C853D /* MyWorkout.swift in Sources */,
+				21B97B062B670A9B00BC8EBE /* IdealWeight.swift in Sources */,
 				218AE77F2B6680220090F981 /* BmiView.swift in Sources */,
 				21ECB47E2B63C707002ACBF9 /* AccountView.swift in Sources */,
 				21F5B6CC2B62DB3D00BD4C09 /* MyWorkoutsHomeView.swift in Sources */,
+				21B97AFE2B66D70300BC8EBE /* DailyCaloryReq.swift in Sources */,
 				2174A2AC2B5C6241006111FD /* ShoppingHistory.swift in Sources */,
 				21CA099A2B5FDC2C00710ABC /* SplashScreenView.swift in Sources */,
 				214165EA2B5A9E6D00F6DD21 /* ShopView.swift in Sources */,
@@ -647,6 +681,7 @@
 				2151D7282B5F03BD006C853D /* MyWorkoutViewModel.swift in Sources */,
 				21645ED12B607E67006853D5 /* DisclosureGroupBodyParts.swift in Sources */,
 				21D1FF542B5C0B4E00D898B8 /* ItemView.swift in Sources */,
+				21B97B042B67039300BC8EBE /* BodyFat.swift in Sources */,
 				21A14B572B59E4D000035742 /* NavigatorView.swift in Sources */,
 				213834532B598A3800EC75F9 /* Bogun_GymApp.swift in Sources */,
 				21ECB47C2B63C2E6002ACBF9 /* SettingsItem.swift in Sources */,
@@ -664,6 +699,7 @@
 				213834722B598C0B00EC75F9 /* FireProfile.swift in Sources */,
 				216183D32B64140600B4DC5F /* EditProfilePicSheet.swift in Sources */,
 				21A018EF2B65347C005A0316 /* PhotoPickerViewModel.swift in Sources */,
+				21B97B082B670CD300BC8EBE /* IdealWeightView.swift in Sources */,
 				21D1FF4A2B5C09D600D898B8 /* CartItemView.swift in Sources */,
 				2199C0A02B5AF09A003248F1 /* ExerciseView.swift in Sources */,
 				2199C0962B5AE5B3003248F1 /* BogunGymRepository.swift in Sources */,
@@ -802,6 +838,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bogun Gym/Preview Content\"";
+				DEVELOPMENT_TEAM = 3KPP7H2Q3K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture image to show in app";
@@ -831,6 +868,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bogun Gym/Preview Content\"";
+				DEVELOPMENT_TEAM = 3KPP7H2Q3K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture image to show in app";

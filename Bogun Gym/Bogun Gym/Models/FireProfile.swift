@@ -15,9 +15,12 @@ struct FireProfile: Codable{
     var gender: String?
     var age: Int?
     var weight: Int?
+    var height: Int?
     var neck: Int?
     var waist: Int?
     var hip: Int?
     var activity: String?
     var goal: String?
+    
+    
 }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MessageListView: View {
-    init(chat: Chat, user: FireProfile){
-        self._messageViewModel = StateObject(wrappedValue: MessageViewModel(chat: chat, user: user))
+    init(chat: Chat){
+        self._messageViewModel = StateObject(wrappedValue: MessageViewModel(chat: chat))
     }
     @StateObject var messageViewModel: MessageViewModel
     var body: some View {
@@ -20,6 +20,7 @@ struct MessageListView: View {
                         HStack{
                             Spacer()
                             MessageView(message: message)
+                                .environmentObject(messageViewModel)
                                 .background{
                                     Color.accentColor.cornerRadius(25)
                                 }
@@ -28,6 +29,7 @@ struct MessageListView: View {
                     } else{
                         HStack{
                             MessageView(message: message)
+                                .environmentObject(messageViewModel)
                                 .background{
                                     Color.gray.opacity(0.3).cornerRadius(25)
                                 }.frame(maxWidth: 250)

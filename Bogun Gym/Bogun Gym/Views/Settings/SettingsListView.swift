@@ -56,7 +56,13 @@ struct SettingsListView: View {
                             Text(SettingsItem.account.title)
                         }
                     }
-                    NavigationLink(destination: BodyParametersView()) {
+                    NavigationLink(destination: BodyParametersView().environmentObject(authViewModel)) {
+                        HStack{
+                            Image(systemName: SettingsItem.body.image)
+                            Text(SettingsItem.body.title)
+                        }
+                    }
+                    NavigationLink(destination: FitnessCalculatorView().environmentObject(authViewModel)) {
                         HStack{
                             Image(systemName: SettingsItem.calculator.image)
                                 
@@ -90,7 +96,7 @@ struct SettingsListView: View {
                         authViewModel.logout()
                     }
                 }
-            }.navigationTitle("Settings").navigationBarTitleDisplayMode(.inline)
+            }.navigationTitle("Settings")
             
                 
             }

@@ -35,7 +35,7 @@ struct ChatsView: View {
         VStack(spacing: 10) {
             List(chatViewModel.chats.filter{(chatViewModel.search.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(chatViewModel.search))}){ chat in
                 NavigationLink {
-                    MessageListView(chat: chat, user: authViewModel.user!)
+                    MessageListView(chat: chat)
                 } label: {
                     Text(chat.title)
                 }

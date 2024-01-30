@@ -23,12 +23,12 @@ class MessageViewModel: ObservableObject{
     let chat: Chat
     
     
-    let user: FireProfile
+   
     
     
-    init(chat: Chat, user: FireProfile){
+    init(chat: Chat){
         self.chat = chat
-        self.user = user
+        
     }
     
     deinit {
@@ -38,11 +38,11 @@ class MessageViewModel: ObservableObject{
     
     
     
-    func createMessage(content: String, userName: String, userPhoto: String?){
+    func createMessage(content: String){
         
         guard let userId = firebaseManager.userId else {return}
         
-        let message = Message(userId: userId, chatId: chat.id ?? "", content: content, timestamp: Date(), userName: userName, userPhoto: userPhoto)
+        let message = Message(userId: userId, chatId: chat.id ?? "", content: content, timestamp: Date())
         
         do {
             try firebaseManager.database.collection("Messages").addDocument(from: message)
@@ -50,6 +50,28 @@ class MessageViewModel: ObservableObject{
             print("Error while saving message: \(error)")
         }
     }
+    
+    
+    func fetchUserProfile(userId: String,completion: @escaping (FireProfile?) -> Void) {
+        let usersDocument = firebaseManager.database.collection("Profiles").document(userId)
+        
+        usersDocument.getDocument { document, error in
+            if let document = document, document.exists{
+                do{
+                    let profile = try document.data(as: FireProfile.self)
+                    completion(profile)
+                } catch{
+                    print("Error decoding profile data: \(error)")
+                    completion(nil)
+                }
+                
+            } else {
+                       completion(nil)
+                   }
+            
+        }
+    }
+
     
     func fetchMessages(){
         
