@@ -17,7 +17,7 @@ struct SettingsView: View {
                     SettingsListView(path: $path)
                 } else{
                     AuthView(firebaseUserViewModel: authViewModel)
-                        .padding()
+                        
                 }
             }
             

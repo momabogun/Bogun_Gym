@@ -19,7 +19,7 @@ struct ChatsView: View {
                     list
                 } else{
                     AuthView(firebaseUserViewModel: authViewModel)
-                        .padding()
+                        
                 }
             }
         }.onAppear{

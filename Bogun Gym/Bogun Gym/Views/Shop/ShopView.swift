@@ -20,7 +20,7 @@ struct ShopView: View {
                     list
                 } else{
                     AuthView(firebaseUserViewModel: authViewModel)
-                        .padding()
+                        
                 }
             }
         }

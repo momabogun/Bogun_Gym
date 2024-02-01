@@ -17,6 +17,7 @@ class AuthViewModel: ObservableObject{
     @Published var bodyFat: BodyFat?
     @Published var idealWeight: IdealWeight?
     @Published var genders = ["male", "female"]
+    @Published var error: Error? = nil
     private let firebaseManager = FirebaseManager.shared
     
     @Published var user: FireProfile?
@@ -68,6 +69,7 @@ class AuthViewModel: ObservableObject{
         firebaseManager.auth.createUser(withEmail: email, password: password){ authResult, error in
             if let error {
                 print("Registration failed:", error.localizedDescription)
+                self.error = error
                 return
             }
             

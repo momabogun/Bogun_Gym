@@ -15,7 +15,7 @@ struct TextButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .font(.headline)
+                .font(.subheadline)
                 .frame(maxWidth: .infinity)
         }
     }

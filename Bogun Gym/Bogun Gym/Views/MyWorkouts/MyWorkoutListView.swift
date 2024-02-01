@@ -22,7 +22,7 @@ struct MyWorkoutListView: View {
                     }
                 } else{
                     AuthView(firebaseUserViewModel: authViewModel)
-                        .padding()
+                        
                 }
             }.onAppear{
                 myWorkoutViewModel.fetchMyWorkouts()

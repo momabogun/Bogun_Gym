@@ -13,33 +13,57 @@ struct AuthView: View {
     @State private var mode: AuthMode = .login
     @State private var email = ""
     @State private var password = ""
+    @State private var confirmPassword = ""
     @State private var name = ""
+    @State private var wrongPassword = false
+    @State private var accountCreated = false
+    @State private var showError = false
     var body: some View {
         VStack{
-            Text("To use this feature, first you must Login or create new account")
-                .font(.title)
-                .bold()
+            Image("logo")
+                .resizable()
+                .scaledToFit()
+                .padding()
             VStack(spacing: 48) {
                 
                 VStack(spacing: 12) {
+                    ZStack(alignment: .bottom){
+                        Text(mode.title)
+                            .font(.title)
+                            .bold()
+                    }
                     ZStack(alignment: .bottom) {
-                        TextField("Username", text: $name)
-                            .frame(minHeight: 36)
-                        
-                        Divider()
+                        if mode != .login{
+                            TextField("Username", text: $name)
+                                .frame(minHeight: 45)
+                                .textFieldStyle(.roundedBorder)
+                            
+                            
+                        }
                     }
                     ZStack(alignment: .bottom) {
                         TextField("E-Mail", text: $email)
-                            .frame(minHeight: 36)
+                            .frame(minHeight: 45)
+                            .textFieldStyle(.roundedBorder)
                         
-                        Divider()
+                        
                     }
                     
                     ZStack(alignment: .bottom) {
-                        SecureField("Passwort", text: $password)
-                            .frame(minHeight: 36)
+                        SecureField("Password", text: $password)
+                            .frame(minHeight: 45)
+                            .textFieldStyle(.roundedBorder)
                         
-                        Divider()
+                        
+                    }
+                    ZStack(alignment: .bottom) {
+                        if mode != .login{
+                            SecureField("Confirm Password", text: $confirmPassword)
+                                .frame(minHeight: 45)
+                                .textFieldStyle(.roundedBorder)
+                            
+                            
+                        }
                     }
                 }
                 .font(.headline)
@@ -53,13 +77,37 @@ struct AuthView: View {
                 Color.gray.opacity(0.2)
                     .cornerRadius(25)
             }
-            Spacer()
+            
+            
+                
+                Text("Please login or register account to use all the features.")
+                    .font(.subheadline)
+                    .padding(.vertical,40)
+                
+            
+                
+           
+        }.alert("Account successfully created!", isPresented: $accountCreated){
+            Button("Ok"){
+                accountCreated.toggle()
+            }
+        }.alert("Your passwords dont match!", isPresented: $wrongPassword){
+            Button("Ok"){
+                wrongPassword.toggle()
+                password = ""
+                confirmPassword = ""
+            }
         }
+       
     
     }
     
     private var disableAuthentication: Bool {
-        email.isEmpty || password.isEmpty || name.isEmpty
+        if mode == .register{
+            email.isEmpty || password.isEmpty || name.isEmpty || confirmPassword.isEmpty
+        } else{
+            email.isEmpty || password.isEmpty
+        }
     }
     
     private func switchAuthenticationMode() {
@@ -72,9 +120,18 @@ struct AuthView: View {
         case .login:
             firebaseUserViewModel.login(email: email, password: password)
         case .register:
-            firebaseUserViewModel.register(email: email, password: password, name: name)
+            if password == confirmPassword{
+                accountCreated = true
+                firebaseUserViewModel.register(email: email, password: password, name: name)
+            } else{
+                wrongPassword = true
+            }
         }
     }
+}
+
+#Preview {
+    AuthView(firebaseUserViewModel: .init())
 }
 
 
