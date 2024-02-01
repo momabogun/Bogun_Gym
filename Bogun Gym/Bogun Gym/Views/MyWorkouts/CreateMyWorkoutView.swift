@@ -13,7 +13,6 @@ struct CreateMyWorkoutView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View{
-        NavigationStack{
             VStack{
                 VStack{
                     
@@ -44,7 +43,7 @@ struct CreateMyWorkoutView: View {
                         .disabled(text.isEmpty || myWorkoutViewModel.pickedExercisesId.isEmpty)
                 }.padding()
             }
-        }
+        
     }
     
 

@@ -10,17 +10,18 @@ import SwiftUI
 struct MyWorkoutView: View {
     @EnvironmentObject var myWorkoutViewModel: MyWorkoutViewModel
     let workout: MyWorkout
+    @Binding var path: NavigationPath
     var body: some View {
-        NavigationStack{
             ScrollView(showsIndicators: false) {
                 VStack{
                     ForEach(myWorkoutViewModel.pickedExercises, id: \.id){ exercise in
-                        ExerciseView(exercise: exercise)
-                            .padding(.horizontal,20)
+                        NavigationLink(value: exercise){
+                            ExerciseView(exercise: exercise)
+                                .padding(.horizontal,20)
+                        }
                     }
                 }.navigationTitle(workout.name).navigationBarTitleDisplayMode(.inline)
-            }
-        }.onAppear{
+            }.onAppear{
             myWorkoutViewModel.fetchExercisesInMyWorkout(workoutId: workout.id ?? "")
         }
         

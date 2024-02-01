@@ -21,7 +21,6 @@ struct BodyParametersView: View {
     @State private var activity: String = ActivityLevel.level_1.rawValue
     @State private var goal: String = Goal.maintain.rawValue
     var body: some View {
-        NavigationStack{
             VStack{
                 Form{
                     Section("Age"){
@@ -70,8 +69,7 @@ struct BodyParametersView: View {
                 PrimaryButton(title: "Done") {
                     authViewModel.updateProfileBiometrics(gender: gender, age: Int(age), weight: Int(weight), neck: Int(neck), waist: Int(waist), hip: Int(hip), activity: activity, goal: goal, height: Int(height))
                     dismiss()
-                }
-            }.navigationTitle("Body Details").navigationBarTitleDisplayMode(.large)
+                }.navigationTitle("Body Details").navigationBarTitleDisplayMode(.large)
         }.onAppear{
             if let userGender = authViewModel.user?.gender{
                 gender = userGender

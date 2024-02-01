@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct MessageListView: View {
-    init(chat: Chat){
+    @Binding var path: NavigationPath
+    init(chat: Chat,path: Binding<NavigationPath>){
+        self._path = path
+
         self._messageViewModel = StateObject(wrappedValue: MessageViewModel(chat: chat))
+        
     }
     @StateObject var messageViewModel: MessageViewModel
     var body: some View {

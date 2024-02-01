@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HelpView: View {
     var body: some View {
-        NavigationStack{
             VStack{
                 Spacer(minLength: 100)
                 
@@ -27,8 +26,7 @@ struct HelpView: View {
                         Text("Terms and Privacy Policy")
                         Text("Licences")
                     }
-                }
-            }.navigationTitle("Bogun Gym").navigationBarTitleDisplayMode(.inline)
+                }.navigationTitle("Bogun Gym").navigationBarTitleDisplayMode(.inline)
         }
     }
 }

@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Binding var path : NavigationPath
     @EnvironmentObject var authViewModel :AuthViewModel
-    @StateObject var bodyViewModel = BodyPartViewModel()
+    @StateObject var exerciseViewModel = ExercisesViewModel()
     @StateObject var myWorkoutViewModel = MyWorkoutViewModel()
+    @StateObject var bodyPartViewModel = BodyPartViewModel()
     let columns = [
         GridItem(.adaptive(minimum: 150))
         ]
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $path){
             ScrollView {
                 VStack(alignment: .leading){
                     AdsView()
@@ -31,8 +33,22 @@ struct HomeView: View {
                         .padding(.horizontal,10)
                     LazyVGrid(columns: columns, spacing: 20) {
                         BodyPartListView()
+                            .environmentObject(bodyPartViewModel)
+                            
                     }.padding(5)
-                }.toolbar{
+                }
+                .navigationDestination(for: BodyPart.self){
+                    ExerciseListView(path: $path, bodyPart: $0)
+                        .environmentObject(exerciseViewModel)
+                }
+                .navigationDestination(for: ExerciseEntity.self){
+                    ExerciseDetailView(path: $path, exercise: $0)
+                }
+                .navigationDestination(for: MyWorkout.self){
+                    MyWorkoutView(workout: $0, path: $path)
+                        .environmentObject(myWorkoutViewModel)
+                }
+                .toolbar{
                     ToolbarItem(placement: .topBarLeading) {
                         Image("logo")
                             .resizable()
@@ -43,15 +59,17 @@ struct HomeView: View {
                 
                 
             }
+                                        
             
         }.onAppear{
             myWorkoutViewModel.fetchMyWorkouts()
         }
     }
     
+    
+    
+    
     }
 
 
-#Preview {
-    HomeView()
-}
+

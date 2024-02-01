@@ -11,7 +11,6 @@ struct FitnessCalculatorView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
         
-        NavigationStack{
             Group {
                 if authViewModel.user?.age == nil{
                    BodyParametersView()
@@ -21,7 +20,6 @@ struct FitnessCalculatorView: View {
                         .environmentObject(authViewModel)
                 }
             }
-        }
 
     }
 }

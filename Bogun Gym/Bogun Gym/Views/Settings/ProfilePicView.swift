@@ -11,7 +11,6 @@ struct ProfilePicView: View {
     @State var isShown: Bool = false
     @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
-        NavigationStack{
             
             VStack{
                 if authViewModel.user?.profilePic == nil {
@@ -30,14 +29,13 @@ struct ProfilePicView: View {
                     }
                 }
                 
-            }.sheet(isPresented: $isShown, content: {
-                EditProfilePicSheet(isShown: $isShown)
-                    .presentationDetents([.height(250)])
-            }).navigationTitle("Profile Photo").toolbar{
-                ToolbarItem{
-                    Button("Edit"){
-                        isShown.toggle()
-                    }
+        }.sheet(isPresented: $isShown, content: {
+            EditProfilePicSheet(isShown: $isShown)
+                .presentationDetents([.height(250)])
+        }).navigationTitle("Profile Photo").toolbar{
+            ToolbarItem{
+                Button("Edit"){
+                    isShown.toggle()
                 }
             }
         }

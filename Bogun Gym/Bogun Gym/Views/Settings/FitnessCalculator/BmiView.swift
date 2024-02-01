@@ -11,7 +11,6 @@ struct BmiView: View {
     
     @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
-        NavigationStack{
             Form{
                 Section{
                     HStack{
@@ -24,8 +23,7 @@ struct BmiView: View {
                         Spacer()
                         Text(authViewModel.bmi?.health ?? "")
                     }
-                }
-            }.navigationTitle("BMI")
+                }.navigationTitle("BMI")
         }
     }
 }

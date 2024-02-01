@@ -11,11 +11,11 @@ struct SettingsListView: View {
     @StateObject var myWorkoutViewModel = MyWorkoutViewModel()
     @StateObject var storeViewModel = StoreViewModel()
     @EnvironmentObject var authViewModel :AuthViewModel
+    @Binding var path: NavigationPath
     var body: some View {
-        NavigationStack{
             Form{
                 Section{
-                    NavigationLink(destination: EditProfileView().environmentObject(authViewModel)) {
+                    NavigationLink(value: SettingsNavOption.profile) {
                         HStack{
                             if authViewModel.user?.profilePic == nil {
                                 Image("profile")
@@ -49,20 +49,20 @@ struct SettingsListView: View {
                 }
                 
                 Section{
-                    NavigationLink(destination: AccountView()) {
+                    NavigationLink(value: SettingsNavOption.account) {
                         HStack{
                             Image(systemName: SettingsItem.account.image)
                                 
                             Text(SettingsItem.account.title)
                         }
                     }
-                    NavigationLink(destination: BodyParametersView().environmentObject(authViewModel)) {
+                    NavigationLink(value: SettingsNavOption.bodyparameters) {
                         HStack{
                             Image(systemName: SettingsItem.body.image)
                             Text(SettingsItem.body.title)
                         }
                     }
-                    NavigationLink(destination: FitnessCalculatorView().environmentObject(authViewModel)) {
+                    NavigationLink(value: SettingsNavOption.fitnesscalculator) {
                         HStack{
                             Image(systemName: SettingsItem.calculator.image)
                                 
@@ -74,7 +74,7 @@ struct SettingsListView: View {
                 }
                 
                 Section{
-                    NavigationLink(destination: HelpView()) {
+                    NavigationLink(value: SettingsNavOption.help) {
                         HStack{
                             Image(systemName: SettingsItem.help.image)
                                 
@@ -96,7 +96,23 @@ struct SettingsListView: View {
                         authViewModel.logout()
                     }
                 }
-            }.navigationTitle("Settings")
+                .navigationDestination(for: SettingsNavOption.self, destination: { value in
+                    switch value {
+                    case .profile:
+                        EditProfileView().environmentObject(authViewModel)
+                    case .account:
+                        AccountView()
+                    case .bodyparameters:
+                        BodyParametersView().environmentObject(authViewModel)
+                    case .fitnesscalculator:
+                        FitnessCalculatorView().environmentObject(authViewModel)
+                    case .help:
+                        HelpView()
+                    case .profilePic:
+                        ProfilePicView()
+                    }
+                })
+                .navigationTitle("Settings")
             
                 
             }

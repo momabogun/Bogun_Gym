@@ -10,12 +10,11 @@ import SwiftUI
 struct MyWorkoutsHomeView: View {
     @EnvironmentObject var myWorkoutViewModel: MyWorkoutViewModel
     var body: some View {
-        NavigationStack{
                 
                     ScrollView(.horizontal,showsIndicators: false) {
                         HStack(spacing: 20){
                             ForEach(myWorkoutViewModel.myWorkouts){ workout in
-                                NavigationLink(destination: MyWorkoutView(workout: workout).environmentObject(myWorkoutViewModel)) {
+                                NavigationLink(value: workout) {
                                     
                                     VStack{
                                         VStack{
@@ -36,7 +35,7 @@ struct MyWorkoutsHomeView: View {
                         }
                 
             }
-        }.padding(.horizontal, 10)
+        .padding(.horizontal, 10)
     }
 }
 

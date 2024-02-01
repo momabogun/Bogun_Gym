@@ -15,7 +15,6 @@ struct EditProfileView: View {
     @State private var editedText: String = ""
     @State private var aboutEdit: String = ""
     var body: some View {
-        NavigationStack{
             Form{
                 Section{
                     NavigationLink(destination: ProfilePicView()) {
@@ -66,7 +65,10 @@ struct EditProfileView: View {
                 Section("ABOUT"){
                     TextEditor(text: $aboutEdit)
                 }
-            }.navigationTitle("Edit Profile").navigationBarTitleDisplayMode(.inline).toolbar{
+            }
+            .navigationTitle("Edit Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar{
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel"){
                         dismiss()
@@ -80,15 +82,17 @@ struct EditProfileView: View {
                     }
                     
                 }
-            }.navigationBarBackButtonHidden(true)
-        }.onAppear{
-            if let initialName = authViewModel.user?.name {
-                        editedText = initialName
-                    }
-                    if let initialAbout = authViewModel.user?.about {
-                        aboutEdit = initialAbout
-                    }
-        }
+            }
+            .navigationBarBackButtonHidden(true)
+            .onAppear{
+                if let initialName = authViewModel.user?.name {
+                            editedText = initialName
+                        }
+                        if let initialAbout = authViewModel.user?.about {
+                            aboutEdit = initialAbout
+                        }
+            }
+        
     }
 }
     

@@ -11,7 +11,6 @@ struct DailyCaloryView: View {
     
     @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
-        NavigationStack{
             Form{
                 Section{
                     HStack{
@@ -57,7 +56,7 @@ struct DailyCaloryView: View {
                         Text(String(authViewModel.goal?.goals.extremeWeightGain.calory ?? 0) + " cal")
                     }
                 }
-            }.navigationTitle("Daily Calory Requirments")
+                .navigationTitle("Daily Calory Requirments")
         }
     }
 }

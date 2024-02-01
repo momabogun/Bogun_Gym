@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseFirestoreSwift
-struct Chat: Codable, Identifiable{
+struct Chat: Codable, Identifiable, Hashable{
     
     @DocumentID var id: String?
     var title: String

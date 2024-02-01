@@ -9,13 +9,12 @@ import SwiftUI
 
 struct ItemView: View {
     let supplement: Supplement
-    @ObservedObject var storeViewModel: StoreViewModel
+    @EnvironmentObject var storeViewModel: StoreViewModel
     @State var quantity: Int16 = 1
     var body: some View {
-        NavigationStack{
             
             VStack(spacing: 15){
-                NavigationLink(destination: DetailShopView(supplement: supplement)){
+                NavigationLink(value: supplement){
                     Image(supplement.image!)
                         .resizable()
                         .scaledToFill()
@@ -47,7 +46,7 @@ struct ItemView: View {
                 .cornerRadius(25.0)
                 .shadow(radius: 3)
                 
-        }
+        
             
     }
     

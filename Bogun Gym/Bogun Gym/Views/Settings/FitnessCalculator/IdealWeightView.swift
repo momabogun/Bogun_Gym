@@ -10,7 +10,6 @@ import SwiftUI
 struct IdealWeightView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
-        NavigationStack{
             Form{
                 Section{
                     HStack{
@@ -33,8 +32,7 @@ struct IdealWeightView: View {
                         Spacer()
                         Text(String(authViewModel.idealWeight?.robinson ?? 0) + "kg")
                     }
-                }
-            }.navigationTitle("Ideal Weight")
+                }.navigationTitle("Ideal Weight")
         }
     }
 }

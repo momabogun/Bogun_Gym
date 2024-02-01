@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct MyWorkoutListView: View {
+    @Binding var path: NavigationPath
     @StateObject var myWorkoutViewModel = MyWorkoutViewModel()
     @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             Group {
                 if authViewModel.userIsLoggenIn{
                     if myWorkoutViewModel.myWorkouts.isEmpty {
@@ -33,7 +34,6 @@ struct MyWorkoutListView: View {
     
     
     private var placeholder: some View {
-        NavigationStack{
             VStack(spacing: 15) {
                 Image("logo")
                     .resizable()
@@ -57,16 +57,15 @@ struct MyWorkoutListView: View {
                     .font(.title)
                     .buttonStyle(.bordered)
             }
-        }
+        
     }
     
     private var list: some View {
         VStack{
             List(myWorkoutViewModel.myWorkouts.filter{(myWorkoutViewModel.search.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(myWorkoutViewModel.search))}) { workout in
-                NavigationLink(destination: MyWorkoutView(workout: workout).environmentObject(myWorkoutViewModel), label: {
+                NavigationLink(value: workout){
                     Text(workout.name)
-                })
-                    
+                }
                     .swipeActions {
                         Button(role: .destructive) {
                             myWorkoutViewModel.deleteMyWorkout(with: workout.id ?? "")
@@ -77,10 +76,19 @@ struct MyWorkoutListView: View {
                     
             }.onAppear{
                 myWorkoutViewModel.fetchMyWorkouts()
-            }.searchable(text: $myWorkoutViewModel.search)
+            }
+            .searchable(text: $myWorkoutViewModel.search)
             
             
-        }.navigationTitle("My Workouts")
+        }
+        .navigationDestination(for: MyWorkout.self){
+            MyWorkoutView(workout: $0, path: $path)
+                .environmentObject(myWorkoutViewModel)
+        }
+        .navigationDestination(for: ExerciseEntity.self){
+            ExerciseDetailView(path: $path, exercise: $0)
+        }
+        .navigationTitle("My Workouts")
             .toolbar{
                 ToolbarItem{
                     NavigationLink(destination: CreateMyWorkoutView().environmentObject(myWorkoutViewModel)) {
@@ -91,6 +99,4 @@ struct MyWorkoutListView: View {
     }
 }
 
-#Preview {
-    MyWorkoutListView()
-}
+

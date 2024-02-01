@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct BodyPartListView: View {
-    @StateObject var bodyViewModel = BodyPartViewModel()
+    
+    @EnvironmentObject var bodyViewModel :BodyPartViewModel
     var body: some View {
             ForEach(bodyViewModel.bodyParts) { part in
-                NavigationLink(destination: ExerciseListView(bodyPart: part)){
+                NavigationLink(value: part){
                     
                     VStack(alignment: .leading){
                                                 Image(part.image ?? "")

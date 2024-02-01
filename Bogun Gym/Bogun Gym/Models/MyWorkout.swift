@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseFirestoreSwift
-struct MyWorkout: Codable,Identifiable{
+struct MyWorkout: Codable,Identifiable, Hashable{
     @DocumentID var id: String?
     
     var userId: String

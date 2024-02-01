@@ -12,8 +12,9 @@ struct ShopView: View {
     @StateObject var storeViewModel: StoreViewModel = StoreViewModel()
     @State var shouldShowCart = false
     @State var isPresented = false
+    @Binding var path: NavigationPath
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $path){
             Group {
                 if authViewModel.userIsLoggenIn{
                     list
@@ -29,7 +30,6 @@ struct ShopView: View {
     
     
     private var list: some View {
-        NavigationStack{
             VStack{
                 
                 ScrollView(showsIndicators: false){
@@ -38,7 +38,7 @@ struct ShopView: View {
                         GridItem(.flexible(minimum: 100))
                     ], spacing: 10) {
                         ForEach(storeViewModel.supplements) { supplement in
-                            ItemView(supplement: supplement, storeViewModel: storeViewModel)
+                            ItemView(supplement: supplement)
                                 .environmentObject(storeViewModel)
                         }
                     }
@@ -53,13 +53,18 @@ struct ShopView: View {
                     .padding(.bottom, 10)
             }.onAppear{
                 storeViewModel.fetchPurchases()
-            }.navigationTitle("Supplement Shop")
+            }
+            .navigationDestination(for: Supplement.self){
+                DetailShopView(supplement: $0)
+            }
+            .navigationTitle("Supplement Shop")
                 .sheet(isPresented: $shouldShowCart, content: {
                     CartView(storeViewModel: storeViewModel, cartShow: $shouldShowCart)
                 })
                 .sheet(isPresented: $isPresented, content: {
                     ShoppingHistory()
                         .environmentObject(storeViewModel)
+                        
                 })
                 .toolbar{
                     ToolbarItem {
@@ -70,7 +75,7 @@ struct ShopView: View {
                 }
                 
                 
-        }
+        
         
             
     }

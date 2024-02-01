@@ -10,7 +10,6 @@ import SwiftUI
 struct BodyFatView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
-        NavigationStack{
             Form{
                 Section{
                     HStack{
@@ -38,8 +37,7 @@ struct BodyFatView: View {
                         Spacer()
                         Text(String(authViewModel.bodyFat?.bmiMethod ?? 0) + " %")
                     }
-                }
-            }.navigationTitle("Body Fat")
+                }.navigationTitle("Body Fat")
         }
     }
 }

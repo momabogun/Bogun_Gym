@@ -9,18 +9,20 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var authViewModel :AuthViewModel
-    
+    @Binding var path: NavigationPath
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $path){
             Group {
                 if authViewModel.userIsLoggenIn{
-                   SettingsListView()
+                    SettingsListView(path: $path)
                 } else{
                     AuthView(firebaseUserViewModel: authViewModel)
                         .padding()
                 }
             }
+            
         }
+        
         
         
     }

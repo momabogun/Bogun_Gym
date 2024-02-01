@@ -11,8 +11,9 @@ struct ChatsView: View {
     @EnvironmentObject var authViewModel :AuthViewModel
     @StateObject var chatViewModel = ChatViewModel()
     @State var sheetCreateChat = false
+    @Binding var path: NavigationPath
     var body: some View {
-        NavigationStack{
+        NavigationStack(path:$path){
             Group {
                 if authViewModel.userIsLoggenIn{
                     list
@@ -34,14 +35,16 @@ struct ChatsView: View {
     private var list: some View {
         VStack(spacing: 10) {
             List(chatViewModel.chats.filter{(chatViewModel.search.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(chatViewModel.search))}){ chat in
-                NavigationLink {
-                    MessageListView(chat: chat)
-                } label: {
+                NavigationLink(value: chat){
                     Text(chat.title)
                 }
 
             }.searchable(text: $chatViewModel.search)
-        }.navigationTitle("Topics")
+        }
+        .navigationDestination(for: Chat.self){
+            MessageListView(chat: $0, path: $path)
+        }
+        .navigationTitle("Topics")
             .sheet(isPresented: $sheetCreateChat){
                 CreateChatSheet(isShown: $sheetCreateChat)
                     .environmentObject(chatViewModel)

@@ -17,7 +17,6 @@ struct EditProfilePicSheet: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @Binding var isShown: Bool
     var body: some View {
-        NavigationStack{
             Form{
                 Section{
                     HStack{
@@ -31,7 +30,6 @@ struct EditProfilePicSheet: View {
                     }.foregroundStyle(.white).onTapGesture {
                         isShown.toggle()
                     }
-                    
                     
                     HStack{
                         PhotosPicker(selection: $photoViewModel.imageSelection, matching: .images) {
@@ -57,8 +55,7 @@ struct EditProfilePicSheet: View {
                         Image(systemName:"trash")
                     }.foregroundStyle(.red)
                 }
-                
-            }.navigationTitle("Edit Profile Picture").toolbar{
+                .navigationTitle("Edit Profile Picture").toolbar{
                 ToolbarItem{
                     Button("", systemImage: "xmark.circle.fill") {
                         isShown.toggle()
