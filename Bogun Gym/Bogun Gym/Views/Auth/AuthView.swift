@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AuthView: View {
     @ObservedObject var firebaseUserViewModel:AuthViewModel
-    
     @State private var mode: AuthMode = .login
     @State private var email = ""
     @State private var password = ""
@@ -17,7 +16,8 @@ struct AuthView: View {
     @State private var name = ""
     @State private var wrongPassword = false
     @State private var accountCreated = false
-    @State private var showError = false
+    @State private var authErrorApeared = false
+    @State private var authError: String?
     var body: some View {
         VStack{
             Image("logo")
@@ -69,7 +69,9 @@ struct AuthView: View {
                 .font(.headline)
                 .textInputAutocapitalization(.never)
                 
-                PrimaryButton(title: mode.title, action: authenticate)
+                PrimaryButton(title: mode.title){
+                    authenticate()
+                }
                     .disabled(disableAuthentication)
                 
                 TextButton(title: mode.alternativeTitle, action: switchAuthenticationMode)
@@ -87,7 +89,8 @@ struct AuthView: View {
             
                 
            
-        }.alert("Account successfully created!", isPresented: $accountCreated){
+        }
+        .alert("Account successfully created!", isPresented: $accountCreated){
             Button("Ok"){
                 accountCreated.toggle()
             }
@@ -98,6 +101,21 @@ struct AuthView: View {
                 confirmPassword = ""
             }
         }
+        
+        .alert("Your passwords dont match!", isPresented: $wrongPassword){
+            Button("Ok"){
+                wrongPassword.toggle()
+                password = ""
+                confirmPassword = ""
+            }
+        }
+        
+        .alert(authError ?? "", isPresented: $authErrorApeared){
+            Button("Ok"){
+                authErrorApeared.toggle()
+            }
+        }
+        
        
     
     }
@@ -118,11 +136,23 @@ struct AuthView: View {
     private func authenticate() {
         switch mode {
         case .login:
-            firebaseUserViewModel.login(email: email, password: password)
+            firebaseUserViewModel.login(email: email, password: password){ error in
+                if let error = error {
+                    authError = error.localizedDescription
+                    authErrorApeared = true
+                }
+                
+            }
         case .register:
             if password == confirmPassword{
-                accountCreated = true
-                firebaseUserViewModel.register(email: email, password: password, name: name)
+                firebaseUserViewModel.register(email: email, password: password, name: name){ error in
+                    if let error = error {
+                        authError = error.localizedDescription
+                        authErrorApeared = true
+                    }else{
+                        accountCreated = true
+                    }
+                }
             } else{
                 wrongPassword = true
             }

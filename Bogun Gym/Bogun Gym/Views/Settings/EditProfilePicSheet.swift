@@ -10,8 +10,6 @@ import PhotosUI
 
 struct EditProfilePicSheet: View {
     @State private var showCamera = false
-    @State private var selectedImage: UIImage?
-    @State private var selectedItem: PhotosPickerItem?
     @State var image: UIImage?
     @StateObject var photoViewModel = PhotoPickerViewModel()
     @EnvironmentObject var authViewModel: AuthViewModel
@@ -23,7 +21,8 @@ struct EditProfilePicSheet: View {
                         Button("Take Photo"){
                             showCamera.toggle()
                         }.fullScreenCover(isPresented: self.$showCamera) {
-                            accessCameraView(selectedImage: self.$selectedImage)
+                            accessCameraView(selectedImage: self.$image)
+                                
                         }
                         Spacer()
                         Image(systemName: "camera")
@@ -90,7 +89,7 @@ struct EditProfilePicSheet: View {
     // Coordinator will help to preview the selected image in the View.
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         var picker: accessCameraView
-        
+        private var photoViewModel = PhotoPickerViewModel()
         init(picker: accessCameraView) {
             self.picker = picker
         }
@@ -98,6 +97,7 @@ struct EditProfilePicSheet: View {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             guard let selectedImage = info[.originalImage] as? UIImage else { return }
             self.picker.selectedImage = selectedImage
+            photoViewModel.uploadPic(withImage: selectedImage)
             self.picker.isPresented.wrappedValue.dismiss()
         }
     }

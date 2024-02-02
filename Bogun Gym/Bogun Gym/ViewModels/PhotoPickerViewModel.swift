@@ -36,7 +36,7 @@ class PhotoPickerViewModel: ObservableObject{
     
     
     
-    private func uploadPic(withImage : UIImage){
+    func uploadPic(withImage : UIImage){
         
         guard let imageData = withImage.jpegData(compressionQuality: 0.5) else {return}
         let storageRef = firebaseManager.storage.reference()
@@ -98,6 +98,10 @@ class PhotoPickerViewModel: ObservableObject{
     
     
     
+    
+    
         
     }
+
+
 

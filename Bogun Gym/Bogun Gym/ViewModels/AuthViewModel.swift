@@ -17,7 +17,9 @@ class AuthViewModel: ObservableObject{
     @Published var bodyFat: BodyFat?
     @Published var idealWeight: IdealWeight?
     @Published var genders = ["male", "female"]
-    @Published var error: Error? = nil
+    @Published var errorMessage: String?
+
+    
     private let firebaseManager = FirebaseManager.shared
     
     @Published var user: FireProfile?
@@ -47,10 +49,10 @@ class AuthViewModel: ObservableObject{
     
     
     
-    func login(email: String, password: String){
+    func login(email: String, password: String, completion: @escaping (Error?) -> Void){
         firebaseManager.auth.signIn(withEmail: email, password: password) { authResult, error in
-            if let error {
-                print("Login failed:", error.localizedDescription)
+            if let error = error {
+                completion(error)
                 return
             }
             
@@ -60,16 +62,16 @@ class AuthViewModel: ObservableObject{
             print("User with email '\(email)' is logged in with id '\(authResult.user.uid)'")
             
             self.fetchUser(with: authResult.user.uid)
+            completion(nil)
             
         }
     }
     
     
-    func register(email: String, password: String, name: String){
+    func register(email: String, password: String, name: String, completion: @escaping (Error?) -> Void){
         firebaseManager.auth.createUser(withEmail: email, password: password){ authResult, error in
-            if let error {
-                print("Registration failed:", error.localizedDescription)
-                self.error = error
+            if let error = error {
+                completion(error)
                 return
             }
             
@@ -79,8 +81,10 @@ class AuthViewModel: ObservableObject{
             
             self.createUser(with: authResult.user.uid, email: email, name: name)
             
-            self.login(email: email, password: password)
-            
+            self.login(email: email, password: password){ error in
+                completion(error)
+            }
+            completion(nil)
         }
     }
     
@@ -91,7 +95,7 @@ class AuthViewModel: ObservableObject{
         do{
             try firebaseManager.database.collection("Profiles").document(id).setData(from: user)
         } catch{
-            print("fehler beim speichern des users: \(error)")
+            print("User is not created: \(error)")
         }
     }
     
@@ -128,7 +132,7 @@ class AuthViewModel: ObservableObject{
         do{
             try firebaseManager.auth.signOut()
             self.user = nil
-            print("User wurde abgemeldet!")
+            print("User is logged out!")
         } catch {
             print("Error signing out: ", error.localizedDescription)
         }
