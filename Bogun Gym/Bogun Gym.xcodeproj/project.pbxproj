@@ -45,6 +45,7 @@
 		2165D4082B5E8CF600DAE919 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165D4072B5E8CF500DAE919 /* Exercise.swift */; };
 		2165D40A2B5E977900DAE919 /* BodyPartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165D4092B5E977900DAE919 /* BodyPartViewModel.swift */; };
 		2165D40C2B5E9B1800DAE919 /* BodyPartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165D40B2B5E9B1800DAE919 /* BodyPartListView.swift */; };
+		2171C9292B6D69F800928EB4 /* Giffy in Frameworks */ = {isa = PBXBuildFile; productRef = 2171C9282B6D69F800928EB4 /* Giffy */; };
 		2174A2AC2B5C6241006111FD /* ShoppingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174A2AB2B5C6241006111FD /* ShoppingHistory.swift */; };
 		21758DE32B6131CA0056DEDE /* PickedExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21758DE22B6131CA0056DEDE /* PickedExercisesView.swift */; };
 		218AE77D2B667C570090F981 /* Bmi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AE77C2B667C570090F981 /* Bmi.swift */; };
@@ -207,6 +208,7 @@
 			files = (
 				213834682B598B0500EC75F9 /* FirebaseAnalyticsSwift in Frameworks */,
 				213834642B598B0500EC75F9 /* FirebaseAnalytics in Frameworks */,
+				2171C9292B6D69F800928EB4 /* Giffy in Frameworks */,
 				213834762B598CF100EC75F9 /* FirebaseAnalytics in Frameworks */,
 				213834782B598CF100EC75F9 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				21E0CE7E2B59913E00437594 /* FirebaseFirestore in Frameworks */,
@@ -565,6 +567,7 @@
 				21E0CE7D2B59913E00437594 /* FirebaseFirestore */,
 				21E0CE7F2B59916100437594 /* FirebaseFirestoreSwift */,
 				216183D42B641D4900B4DC5F /* FirebaseStorage */,
+				2171C9282B6D69F800928EB4 /* Giffy */,
 			);
 			productName = "Bogun Gym";
 			productReference = 2138344F2B598A3800EC75F9 /* Bogun Gym.app */;
@@ -596,6 +599,7 @@
 			mainGroup = 213834462B598A3800EC75F9;
 			packageReferences = (
 				213834622B598B0500EC75F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2171C9272B6D69F800928EB4 /* XCRemoteSwiftPackageReference "Giffy" */,
 			);
 			productRefGroup = 213834502B598A3800EC75F9 /* Products */;
 			projectDirPath = "";
@@ -922,6 +926,14 @@
 				minimumVersion = 10.20.0;
 			};
 		};
+		2171C9272B6D69F800928EB4 /* XCRemoteSwiftPackageReference "Giffy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tfmart/Giffy.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -979,6 +991,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 213834622B598B0500EC75F9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		2171C9282B6D69F800928EB4 /* Giffy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2171C9272B6D69F800928EB4 /* XCRemoteSwiftPackageReference "Giffy" */;
+			productName = Giffy;
 		};
 		21E0CE702B598FE600437594 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

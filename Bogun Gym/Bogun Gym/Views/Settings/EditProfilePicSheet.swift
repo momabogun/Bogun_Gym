@@ -15,6 +15,7 @@ struct EditProfilePicSheet: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @Binding var isShown: Bool
     var body: some View {
+        NavigationStack{
             Form{
                 Section{
                     HStack{
@@ -22,13 +23,11 @@ struct EditProfilePicSheet: View {
                             showCamera.toggle()
                         }.fullScreenCover(isPresented: self.$showCamera) {
                             accessCameraView(selectedImage: self.$image)
-                                
+                            
                         }
                         Spacer()
                         Image(systemName: "camera")
-                    }.foregroundStyle(.white).onTapGesture {
-                        isShown.toggle()
-                    }
+                    }.foregroundStyle(.white)
                     
                     HStack{
                         PhotosPicker(selection: $photoViewModel.imageSelection, matching: .images) {
@@ -41,8 +40,6 @@ struct EditProfilePicSheet: View {
                         
                         
                         
-                    }.onSubmit {
-                        isShown.toggle()
                     }
                     
                     HStack{
@@ -54,13 +51,15 @@ struct EditProfilePicSheet: View {
                         Image(systemName:"trash")
                     }.foregroundStyle(.red)
                 }
+            }
                 .navigationTitle("Edit Profile Picture").toolbar{
-                ToolbarItem{
-                    Button("", systemImage: "xmark.circle.fill") {
-                        isShown.toggle()
+                    ToolbarItem{
+                        Button("", systemImage: "xmark.circle.fill") {
+                            isShown.toggle()
+                        }
                     }
                 }
-            }
+            
         }
     }
     

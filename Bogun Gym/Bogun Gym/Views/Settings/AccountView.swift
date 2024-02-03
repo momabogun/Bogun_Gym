@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct AccountView: View {
+    @State private var deleteConfirmation: Bool = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form{
+            Section{
+                Button("Delete my account"){
+                    deleteConfirmation.toggle()
+                }.foregroundStyle(.red)
+            }
+        }.alert("Are you sure that you want to delete your account?", isPresented: $deleteConfirmation){
+            
+            Button("No"){
+                deleteConfirmation.toggle()
+            }
+            Button("Yes"){
+                
+            }.foregroundStyle(.red)
+            
+        }
     }
 }
 

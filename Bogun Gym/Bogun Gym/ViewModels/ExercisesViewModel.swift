@@ -24,16 +24,9 @@ class ExercisesViewModel: ObservableObject{
     
     
     
+
     
-    func searchForExercises(){
-        let request : NSFetchRequest<ExerciseEntity> = ExerciseEntity.fetchRequest()
-        request.predicate = NSPredicate(format: "name CONTAINS %@", search)
-        do{
-            exercises = try container.context.fetch(request)
-        }catch {
-            fatalError("Failed to fetch exercises: \(error)")
-        }
-    }
+   
     
  
     
@@ -70,7 +63,7 @@ class ExercisesViewModel: ObservableObject{
         
         for exercise in exercises{
             let entity = ExerciseEntity(context: context)
-            entity.id = UUID().uuidString
+            entity.id = exercise.name
             entity.name = exercise.name
             entity.gifUrl = exercise.gifUrl
             entity.equipment = exercise.equipment

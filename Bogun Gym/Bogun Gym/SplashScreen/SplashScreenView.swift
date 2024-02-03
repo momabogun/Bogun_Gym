@@ -17,7 +17,7 @@ struct SplashScreenView: View {
             Image("logo")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 100,height: 100)
+                .frame(width: 250,height: 250)
         }
         .scaleEffect(scale)
         .opacity(opacity)

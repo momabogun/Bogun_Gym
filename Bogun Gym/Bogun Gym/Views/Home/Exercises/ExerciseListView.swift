@@ -14,7 +14,7 @@ struct ExerciseListView: View {
     var body: some View {
             ScrollView(showsIndicators: false) {
                 
-                    ForEach(exerciseViewModel.exercises){ exercise in
+                ForEach(exerciseViewModel.exercises.filter{(exerciseViewModel.search.isEmpty ? true : $0.name!.localizedCaseInsensitiveContains(exerciseViewModel.search))}){ exercise in
                         NavigationLink(value: exercise){
                             ExerciseView(exercise: exercise)
                                 .padding(.horizontal,20)
@@ -22,9 +22,7 @@ struct ExerciseListView: View {
                         }
                             
                     }
-                .searchable(text: $exerciseViewModel.search).onChange(of: exerciseViewModel.search) {
-                    exerciseViewModel.searchForExercises()
-            }
+                .searchable(text: $exerciseViewModel.search)
                     
             }.onAppear{
             exerciseViewModel.fetchExercises(for: bodyPart)
