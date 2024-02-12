@@ -23,7 +23,7 @@ struct NavigatorView: View {
                 }.tag(Tab.home)
             ShopView(path: $shopNavigationStack)
                 .tabItem {
-                    Label(Tab.chats.title, systemImage: Tab.shop.icon)
+                    Label(Tab.shop.title, systemImage: Tab.shop.icon)
                 }.tag(Tab.shop)
             ChatsView(path: $chatNavigationStack)
                 .tabItem {
